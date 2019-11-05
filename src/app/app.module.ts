@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { AuthService } from './services/auth.service';
+import { HomeComponent } from './app/home/home.component';
+import { RegisterComponent } from './app/register/register.component';
 
 
 
@@ -13,7 +15,9 @@ import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
