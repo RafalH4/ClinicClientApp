@@ -1,8 +1,8 @@
-<h2 class="text-center text=primary" (ngSubmit)="register()" > Załóż konto</h2>
+<h2 class="text-center text=primary"> Załóż konto</h2>
 <hr>
 
-<form [formGroup]="modelForm">
-    <h4 class="text-center text=primary"> Dane osobowe</h4>
+<form [formGroup]="modelForm" (ngSubmit)="register()">
+    <h4 class="text-center text=primary" > Dane osobowe</h4>
     <div class="row">
         <div class="form-group col-md-6">
             <input type="text" class="form-control" placeholder="Imię" formControlName="firstName">
@@ -10,6 +10,7 @@
 
         <div class="form-group col-md-6">
             <input type="text" class="form-control" placeholder="Nazwisko" formControlName="secondName">
+            <span *ngIf="formErrors.secondName">{{ formErrors.secondName }}</span>
         </div>
         <div class="form-group col-md-6">
             <input type="text" class="form-control" placeholder="PESEL" formControlName="pesel">
@@ -61,3 +62,4 @@
 
     
 </form>
+

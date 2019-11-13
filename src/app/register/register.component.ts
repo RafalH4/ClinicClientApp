@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,27 +10,29 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   model: any = {};
   
-  modelForm : FormGroup;formErrors ={
-    firstName:'',
-    lastName:''
+  modelForm : FormGroup;
+
+  formErrors = {
+    firstname: '',
+    lastname: ''
   }
 
   private validationMessages = {
-    firstName : {
-      required : "firstName is required"
+    firstName: {
+      required: 'firstname is required'
     },
-    lastName : {
-      required : "lastName is required",
-      maxLength: "lastName must have at least 6 characters"
+    secondName: {
+      required: 'lastname is required',
+      minlength: 'lastname must have at least 3 characters'
     }
   }
-
-  constructor(private formBuilder : FormBuilder) { }
+  constructor(private formBuilder : FormBuilder,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.modelForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      secondName: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      secondName: ['', [Validators.required, Validators.minLength(3)]],
       pesel: ['', Validators.required],
 
       postCode: ['', Validators.required],
@@ -40,25 +43,17 @@ export class RegisterComponent implements OnInit {
 
       email: ['', Validators.email],
       password: ['', Validators.required],
-      password2: ['', Validators.required],
-
-    });
-  }
-
-  onControlValueChanged() {
-    const form = this.modelForm;
-
-    for(let field in this.formErrors) {
-      this.formErrors[field] ='';
-      let  control = form.get(field);
-
-      
-    }
+      password2: ['', Validators.required]
+    }); 
   }
   register() {
-    console.log("Hello");
-    console.log(this.model);
-  }
+    this.authService.register(this.modelForm.value).subscribe(() =>{
+      console.log('registration successful');
+    },error => {
+      console.log(error);
+    });
+  } 
+
   cancel() {
     console.log('cancelled');
   }
