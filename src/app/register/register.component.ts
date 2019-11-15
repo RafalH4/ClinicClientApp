@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
       houseNumber: ['', Validators.required],
       phoneNumber: ['', Validators.required],
 
-      email: ['', Validators.email],
+      email: ['', Validators.email, this.authService],
       password: ['', Validators.required],
       password2: ['', Validators.required]
     }); 
@@ -57,6 +58,6 @@ export class RegisterComponent implements OnInit {
   cancel() {
     console.log('cancelled');
   }
-  
+ 
 
 }
