@@ -1,4 +1,4 @@
-<div *ngIf="!registerMode" style = "text-align: center">
+<!--<div *ngIf="!registerMode" style = "text-align: center">
         <app-register></app-register>
 </div>
 
@@ -7,6 +7,14 @@
             <div class="col-8">
 <app-register></app-register>
             </div>
-        </div>
-    </div> 
+    </div>
+</div> -->
+
+
+<div *ngIf="loggedIn()" class="dropdown">
+Zalogowany
+ </div>
+ <div *ngIf="!loggedIn()" class="dropdown">
+    <app-login></app-login>
+</div>
 

@@ -16,4 +16,9 @@ registerMode=false;
     this.registerMode =!this.registerMode;
   }
 
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !!token;
+  }
+
 }
