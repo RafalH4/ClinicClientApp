@@ -16,7 +16,7 @@ body {
 }
 #sidebar-container {
     min-height: 100vh;   
-    background-color: #333;
+    background-color: #fff;
     padding: 0;
 }
 
@@ -45,15 +45,15 @@ body {
 
 /* Separators */
 .sidebar-separator-title {
-    background-color: #333;
+    background-color: #fff;
     height: 35px;
 }
 .sidebar-separator {
-    background-color: #333;
+    background-color: #fff;
     height: 25px;
 }
 .logo-separator {
-    background-color: #333;    
+    background-color: #fff;    
     height: 60px;
 }
 

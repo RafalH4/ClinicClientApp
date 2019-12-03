@@ -10,7 +10,6 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersComponent } from './users/users.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopNavComponent } from './admin-page/top-nav/top-nav.component';
 import { LeftNavComponent } from './admin-page/left-nav/left-nav.component';
@@ -21,9 +20,13 @@ import { MedOfficesComponent } from './content/med-offices/med-offices.component
 import { ContractsComponent } from './content/contracts/contracts.component';
 import { PrescriptionsComponent } from './content/prescriptions/prescriptions.component';
 import { RefferalsComponent } from './content/refferals/refferals.component';
+import { StartPageComponent } from './start-page/start-page.component';
+import { UserDetailsComponent } from './content/users/user-details/user-details.component';
+
 
 
 const appRoutes: Routes = [
+  { path: '', component: StartPageComponent },
   { path: 'users', component: UsersComponent },
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
@@ -54,13 +57,17 @@ const appRoutes: Routes = [
     MedOfficesComponent,
     ContractsComponent,
     PrescriptionsComponent,
-    RefferalsComponent
+    RefferalsComponent,
+    PageNotFoundComponent,
+    StartPageComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     AuthService
