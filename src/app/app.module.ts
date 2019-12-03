@@ -28,7 +28,7 @@ import { UserDetailsComponent } from './content/users/user-details/user-details.
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'users', component: UsersComponent },
-  // { path: 'hero/:id',      component: HeroDetailComponent },
+  { path: 'users/:id', component: UserDetailsComponent },
   // {
   //   path: 'heroes',
   //   component: HeroListComponent,

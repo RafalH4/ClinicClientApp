@@ -1,1 +1,76 @@
-<p>user-details works!</p>
+<div *ngIf="!editMode">
+<h1> Informacje szczegółowe o {{user.firstName}} {{user.secondName}} </h1>
+
+<p>Imię: {{user.firstName}}</p>
+<p>Nazwisko: {{user.secondName}}</p>
+<p>Pesel: {{user.pesel}}</p>
+<p>Numer Telefonu: {{user.phoneNumber}}</p>
+<p>Kod pocztowy: {{user.postCode}}</p>
+<p>Ulica: {{user.street}}</p>
+<p>Numer budynku: {{user.houseNumber}}</p>
+<p>Miasto: {{user.city}}</p>
+
+<p>Email: {{user.email}}</p>
+<p>Rola: {{user.role}}</p>
+<button type="button" class="btn btn-primary mr-1" (click)="editUser()">Edycja</button>
+<button type="button" class="btn btn-danger">Usuń</button>
+
+</div>
+
+<div *ngIf="editMode">
+    <form [formGroup]="editForm" (ngSubmit)="register()">
+        <h4 class="text-center text=primary" > Dane osobowe</h4>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Imię" formControlName="firstName">
+            </div>
+    
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Nazwisko" formControlName="secondName">
+                <span *ngIf="formErrors.secondName">{{ formErrors.secondName }}</span>
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="PESEL" formControlName="pesel">
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="E-mail" formControlName="email">
+            </div>
+    
+        </div>
+        <h4 class="text-center text=primary"> Dane kontaktowe</h4>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Kod pocztowy" formControlName="postCode">
+            </div>
+    
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Miasto" formControlName="city">
+            </div>
+    
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Ulica" formControlName="street">
+            </div>
+    
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Nr budynku" formControlName="houseNumber">
+            </div>
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Numer telefonu" formControlName="phoneNumber">
+            </div>
+        </div>
+    
+    
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary mr-1">Zapisz</button>
+            <button type="button" class="btn btn-danger" (click)="closeEdit()">Anuluj</button>
+        </div>
+        
+    </form>
+
+</div>
+
+
+
+
+
+
