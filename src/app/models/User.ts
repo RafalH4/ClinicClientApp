@@ -8,6 +8,6 @@ export class User {
     phoneNumber : String;
     postCode : String;
     city : String;
-    Street : String;
-    HouseNumber : String;
+    street : String;
+    houseNumber : String;
 }

@@ -21,35 +21,39 @@ export class UserDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.forEach(({params}:Params)=>{
     this.param = params['id']
-  })
+    })
 
-  this.http.getUserById(this.param).subscribe((data : User)=>{
-    this.user = data;
-  })
-
-  this.editForm = this.formBuilder.group({
-    firstName: [this.user.firstName, [Validators.required, Validators.minLength(3)]],
-    secondName: ['', [Validators.required, Validators.minLength(3)]],
-    pesel: ['', Validators.required],
-
-    postCode: ['', Validators.required],
-    city: ['', Validators.required],
-    street: ['', Validators.required],
-    houseNumber: ['', Validators.required],
-    phoneNumber: ['', Validators.required],
-
-    email: ['', Validators.email],
-
-  }); 
-
-
+    this.http.getUserById(this.param).subscribe((data : User)=>{
+      this.user = data;
+      console.log("USER:");
+      console.log(this.user)
+    })
   }
 
   editUser() {
+    console.log(this.user);
     this.editMode=true;
+    this.editForm = this.formBuilder.group({
+      id:[this.user.id],
+      firstName: [this.user.firstName,Validators.required],
+      secondName: [this.user.secondName, Validators.required],
+      pesel: [this.user.pesel, Validators.required],
+      postCode: [this.user.postCode, Validators.required],
+      city: [this.user.city, Validators.required],
+      street: [this.user.street, Validators.required],
+      houseNumber: [this.user.houseNumber, Validators.required],
+      phoneNumber: [this.user.phoneNumber, Validators.required],
+      email: [this.user.email, Validators.required],
+  
+    }); 
   }
   closeEdit() {
     this.editMode=false;
+  }
+  saveUser() {
+
+    console.log(this.editForm.value);
+    this.http.updateUser(this.editForm.value).subscribe(res => console.log(res));
   }
 
 
