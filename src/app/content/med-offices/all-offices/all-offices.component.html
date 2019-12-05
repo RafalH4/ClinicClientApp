@@ -1,0 +1,24 @@
+<h3>Wszystkie gabinety</h3>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">L.p</th>
+          <th scope="col">Numer</th>
+          <th scope="col">Opis</th>
+          <th scope="col">Oddział</th>
+          <th scope="col">Więcej</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let office of medOffices; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{office.officeNumber}}</td>
+          <td>{{office.description}}</td>
+          <td>Nie ma xd</td>
+          <td>
+            <button routerLink="/medOffices/{{office.id}}" type="button" class="btn btn-primary mr-1">Więcej</button>
+            <button type="button" class="btn btn-danger" (click)="deleteOffice(office.id)">Usuń</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>

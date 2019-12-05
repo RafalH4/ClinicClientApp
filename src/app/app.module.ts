@@ -31,6 +31,9 @@ import { AddDepartmentComponent } from './content/departments/add-department/add
 import { AllDepartmentsComponent } from './content/departments/all-departments/all-departments.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DepartmentDetailComponent } from './content/departments/department-detail/department-detail.component';
+import { AddOfficeComponent } from './content/med-offices/add-office/add-office.component';
+import { AllOfficesComponent } from './content/med-offices/all-offices/all-offices.component';
+import { OfficesDetailsComponent } from './content/med-offices/offices-details/offices-details.component';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
@@ -41,6 +44,12 @@ const appRoutes: Routes = [
     {path: 'add', component: AddDepartmentComponent},
     {path: ':id', component: DepartmentDetailComponent},
   ]},
+  { path: 'medOffices', component: MedOfficesComponent, children : [
+    {path: '', component: AllOfficesComponent},
+    {path: 'add', component: AddOfficeComponent},
+    {path: ':id', component: OfficesDetailsComponent},
+  ]},
+  
 
 
 
@@ -85,7 +94,12 @@ const appRoutes: Routes = [
     SignOfficeComponent,
     AddDepartmentComponent,
     AllDepartmentsComponent,
-    DepartmentDetailComponent
+    DepartmentDetailComponent,
+    AddOfficeComponent,
+    AllOfficesComponent,
+    OfficesDetailsComponent
+
+
   ],
   imports: [
     BrowserModule,
