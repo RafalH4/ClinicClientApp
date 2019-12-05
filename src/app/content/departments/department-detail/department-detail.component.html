@@ -1,0 +1,41 @@
+<div *ngIf="!editMode">
+        <h1> Informacje szczegółowe o oddziale: {{department.name}} </h1>
+        
+        <p>Nazwa: {{department.name}}</p>
+        <p>Numer telefonu: {{department.phoneNumber}}</p>
+        <p>Gabinety: {{department.medOffices}}</p>
+        <p>Kontrakty: {{department.contracts}}</p>
+
+        <button type="button" class="btn btn-primary mr-1" (click)="editDepartment()">Edycja</button>
+        <button routerLink="/users" type="button" class="btn btn-secondary">Lista użytkowników</button>
+        <button type="button" class="btn btn-danger" (click)="deleteDepartment()">Usuń</button>
+        
+        </div>
+        <div *ngIf="editMode">
+                <form [formGroup]="editDepartForm" (ngSubmit)="saveDepartment()">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <input type="text" class="form-control" formControlName="name">
+                            </div>
+                            <div class="form-group col-12">
+                                <input type="text" class="form-control" formControlName="phoneNumber">
+                            </div>
+                            <div class="form-group col-12">
+                                <input type="text" class="form-control" formControlName="description">
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary mr-1">Zapisz</button>
+                            <button type="button" class="btn btn-danger" (click)="changeMode()">Anuluj</button>
+                        </div>
+                        
+                    </form>
+        
+        </div>
+        
+        
+        
+        
+        
+        
+        

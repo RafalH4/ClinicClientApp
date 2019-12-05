@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UsersService } from 'src/app/services/userServices/users.service';
-import { User } from 'src/app/models/User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UserDetailsComponent implements OnInit {
   param: string = "";
-  user : User = new User();
+  user : any = {}
   editMode: boolean = false;
   editForm : FormGroup;
   constructor(private route: ActivatedRoute, 
@@ -24,7 +23,7 @@ export class UserDetailsComponent implements OnInit {
     })
     console.log("param"+this.param);
 
-    this.http.getUserById(this.param).subscribe((data : User)=>{
+    this.http.getUserById(this.param).subscribe((data : any)=>{
       this.user = data;
       console.log("USER:");
       console.log(this.user)

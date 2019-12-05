@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { DepartmentsService } from 'src/app/services/departments.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-department',
@@ -10,7 +11,9 @@ import { DepartmentsService } from 'src/app/services/departments.service';
 export class AddDepartmentComponent implements OnInit {
   newDepartForm : FormGroup;
   constructor(private formBuilder : FormBuilder,
-              private http: DepartmentsService) { }
+              private http: DepartmentsService, 
+              private router: Router, 
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.newDepartForm = this.formBuilder.group({
@@ -23,7 +26,10 @@ export class AddDepartmentComponent implements OnInit {
 
   addDepart()
   {
-    this.http.addDepartment(this.newDepartForm.value).subscribe(()=>console.log("success"), ()=>console.log("error"))
-    console.log("dodaję");
+    this.http.addDepartment(this.newDepartForm.value).subscribe(()=>{
+      this.router.navigate([`../../departments`], { relativeTo: this.route })
+    }, (error)=>{
+      console.log(error);
+    }) 
   }
 }

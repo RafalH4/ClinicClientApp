@@ -30,14 +30,19 @@ import { SignOfficeComponent } from './content/departments/sign-office/sign-offi
 import { AddDepartmentComponent } from './content/departments/add-department/add-department.component';
 import { AllDepartmentsComponent } from './content/departments/all-departments/all-departments.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DepartmentDetailComponent } from './content/departments/department-detail/department-detail.component';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'users', component: UsersComponent },
   { path: 'users/:id', component: UserDetailsComponent },
-  { path: 'departments', component: DepartmentsComponent},
-  { path: 'departments/add', component: AddDepartmentComponent},
-  { path: 'departments/signOffice', component: SignOfficeComponent},
+  { path: 'departments', component: DepartmentsComponent, children : [
+    {path: '', component: AllDepartmentsComponent},
+    {path: 'add', component: AddDepartmentComponent},
+    {path: ':id', component: DepartmentDetailComponent},
+  ]},
+
+
 
   
 
@@ -79,7 +84,8 @@ const appRoutes: Routes = [
     PatientsComponent,
     SignOfficeComponent,
     AddDepartmentComponent,
-    AllDepartmentsComponent
+    AllDepartmentsComponent,
+    DepartmentDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentsService } from 'src/app/services/departments.service';
-import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @Component({
@@ -10,14 +10,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 })
 export class DepartmentsComponent implements OnInit {
 
-  departments = [];
-  constructor(private http: DepartmentsService) { }
+  
+  constructor() { }
 
   ngOnInit() {
-    this.http.getAllDepartments().subscribe((data: any[])=>{
-      this.departments = data;
-      console.log(this.departments)
-    })
   }
 
 }
