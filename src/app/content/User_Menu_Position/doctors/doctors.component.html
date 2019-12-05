@@ -1,4 +1,4 @@
-<h2>Użytkownicy</h2>
+<h2>Lekarze</h2>
 <table class="table">
     <thead>
       <tr>
@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users; let i = index">
+      <tr *ngFor="let user of doctors; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{user.firstName}}</td>
         <td>{{user.secondName}}</td>

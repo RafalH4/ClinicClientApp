@@ -13,6 +13,7 @@
 <p>Email: {{user.email}}</p>
 <p>Rola: {{user.role}}</p>
 <button type="button" class="btn btn-primary mr-1" (click)="editUser()">Edycja</button>
+<button routerLink="/users" type="button" class="btn btn-secondary">Lista użytkowników</button>
 <button type="button" class="btn btn-danger">Usuń</button>
 
 </div>
@@ -61,7 +62,7 @@
     
         <div class="form-group text-center">
             <button type="submit" class="btn btn-primary mr-1">Zapisz</button>
-            <button type="button" class="btn btn-danger" (click)="closeEdit()">Anuluj</button>
+            <button type="button" class="btn btn-danger" (click)="changeMode()">Anuluj</button>
         </div>
         
     </form>

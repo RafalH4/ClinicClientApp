@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { UsersService } from 'src/app/services/users.service';
+import { UsersService } from 'src/app/services/userServices/users.service';
 import { User } from 'src/app/models/User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -22,6 +22,7 @@ export class UserDetailsComponent implements OnInit {
     this.route.paramMap.forEach(({params}:Params)=>{
     this.param = params['id']
     })
+    console.log("param"+this.param);
 
     this.http.getUserById(this.param).subscribe((data : User)=>{
       this.user = data;
@@ -31,7 +32,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   editUser() {
-    console.log(this.user);
     this.editMode=true;
     this.editForm = this.formBuilder.group({
       id:[this.user.id],
@@ -47,13 +47,19 @@ export class UserDetailsComponent implements OnInit {
   
     }); 
   }
-  closeEdit() {
-    this.editMode=false;
+  changeMode() {
+    this.editMode=!this.editMode;
   }
   saveUser() {
 
     console.log(this.editForm.value);
-    this.http.updateUser(this.editForm.value).subscribe(res => console.log(res));
+    this.http.updateUser(this.editForm.value).subscribe(
+      ()=>{
+        console.log("success")
+        this.ngOnInit();
+        this.changeMode();
+      },
+      () => console.log("error"))
   }
 
 

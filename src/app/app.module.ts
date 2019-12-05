@@ -13,7 +13,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TopNavComponent } from './admin-page/top-nav/top-nav.component';
 import { LeftNavComponent } from './admin-page/left-nav/left-nav.component';
-import { UsersComponent } from './content/users/users.component';
 import { AppointmentsComponent } from './content/appointments/appointments.component';
 import { DepartmentsComponent } from './content/departments/departments.component';
 import { MedOfficesComponent } from './content/med-offices/med-offices.component';
@@ -21,14 +20,27 @@ import { ContractsComponent } from './content/contracts/contracts.component';
 import { PrescriptionsComponent } from './content/prescriptions/prescriptions.component';
 import { RefferalsComponent } from './content/refferals/refferals.component';
 import { StartPageComponent } from './start-page/start-page.component';
-import { UserDetailsComponent } from './content/users/user-details/user-details.component';
-
-
+import { UsersComponent } from './content/User_Menu_Position/users/users.component';
+import { UserDetailsComponent } from './content/User_Menu_Position/users/user-details/user-details.component';
+import { RootsComponent } from './content/User_Menu_Position/roots/roots.component';
+import { NursesComponent } from './content/User_Menu_Position/nurses/nurses.component';
+import { DoctorsComponent } from './content/User_Menu_Position/doctors/doctors.component';
+import { PatientsComponent } from './content/User_Menu_Position/patients/patients.component';
+import { SignOfficeComponent } from './content/departments/sign-office/sign-office.component';
+import { AddDepartmentComponent } from './content/departments/add-department/add-department.component';
+import { AllDepartmentsComponent } from './content/departments/all-departments/all-departments.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'users', component: UsersComponent },
   { path: 'users/:id', component: UserDetailsComponent },
+  { path: 'departments', component: DepartmentsComponent},
+  { path: 'departments/add', component: AddDepartmentComponent},
+  { path: 'departments/signOffice', component: SignOfficeComponent},
+
+  
+
   // {
   //   path: 'heroes',
   //   component: HeroListComponent,
@@ -61,6 +73,13 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     StartPageComponent,
     UserDetailsComponent,
+    RootsComponent,
+    NursesComponent,
+    DoctorsComponent,
+    PatientsComponent,
+    SignOfficeComponent,
+    AddDepartmentComponent,
+    AllDepartmentsComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +87,7 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService
