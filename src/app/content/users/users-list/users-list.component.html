@@ -1,4 +1,5 @@
-<h2>Lekarze</h2>
+<h3>{{title}}</h3>
+
 <table class="table">
     <thead>
       <tr>
@@ -12,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of doctors; let i = index">
+      <tr *ngFor="let user of users; let i = index">
         <th scope="row">{{i+1}}</th>
         <td>{{user.firstName}}</td>
         <td>{{user.secondName}}</td>
@@ -20,7 +21,7 @@
         <td>{{user.phoneNumber}}</td>
         <td>{{user.email}}</td>
         <td><button routerLink="/users/{{user.id}}" type="button" class="btn btn-primary mr-1">Więcej</button>
-        <button type="button" class="btn btn-danger">Usuń</button></td>
+          <button type="button" class="btn btn-danger">Usuń</button></td>
       </tr>
     </tbody>
   </table>

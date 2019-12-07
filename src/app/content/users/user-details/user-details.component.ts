@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/userServices/users.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -18,6 +18,7 @@ export class UserDetailsComponent implements OnInit {
               private formBuilder : FormBuilder) { }
 
   ngOnInit() {
+    
     this.route.paramMap.forEach(({params}:Params)=>{
     this.param = params['id']
     })

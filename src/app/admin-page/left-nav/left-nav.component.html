@@ -6,31 +6,14 @@
 
 
 <!--#region UŻYTKOWNICY  -->
-    <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
+    <a routerLink="users" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">
         <div class="d-flex w-100 justify-content-start align-items-center">
             <span class="fa fa-users fa-fw mr-3"></span> <!-- Icon -->
             <span class="menu-collapsed">Użytkownicy</span> <!-- Text -->
             <span class="submenu-icon ml-auto"></span> <!-- Icon arrow  -->
         </div>
     </a>
-    <!-- Submenu content -->
-    <div id="submenu1" class="collapse sidebar-submenu">
-        <a routerLink="/users" class="list-group-item list-group-item-action">
-            <span class="menu-collapsed">Wszyscy</span>
-        </a>
-        <a routerLink="/doctors"  class="list-group-item list-group-item-action">
-            <span class="menu-collapsed">Lekarze</span>
-        </a>
-        <a routerLink="/nurses"  class="list-group-item list-group-item-action">
-            <span class="menu-collapsed">Pielęgniarki</span>
-        </a>
-        <a routerLink="/patients" class="list-group-item list-group-item-action">
-                <span class="menu-collapsed">Pacjenci</span>
-        </a>
-        <a routerLink="/roots"  class="list-group-item list-group-item-action">
-                <span class="menu-collapsed">Administratorzy</span>
-        </a>
-    </div>
+
 <!--#endregion -->
 <!--#region WIZYTY  -->
     <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="list-group-item list-group-item-action flex-column align-items-start">

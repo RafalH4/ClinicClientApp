@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentsService } from 'src/app/services/departments.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 
@@ -10,10 +11,14 @@ import { DepartmentsService } from 'src/app/services/departments.service';
 })
 export class DepartmentsComponent implements OnInit {
 
-  
-  constructor() { }
+  param: string = "";
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.paramMap.forEach(({params}:Params)=>{
+      this.param = params['id']
+      })
+      console.log("param"+this.param);
   }
 
 }

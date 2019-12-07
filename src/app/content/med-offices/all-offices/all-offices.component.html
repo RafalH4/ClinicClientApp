@@ -14,7 +14,7 @@
           <th scope="row">{{i+1}}</th>
           <td>{{office.officeNumber}}</td>
           <td>{{office.description}}</td>
-          <td>Nie ma xd</td>
+          <td>{{office.department.name}}</td>
           <td>
             <button routerLink="/medOffices/{{office.id}}" type="button" class="btn btn-primary mr-1">Więcej</button>
             <button type="button" class="btn btn-danger" (click)="deleteOffice(office.id)">Usuń</button>

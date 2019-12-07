@@ -14,6 +14,7 @@ export class AllOfficesComponent implements OnInit {
   ngOnInit() {
     this.http.getMedOffices().subscribe((data: any[]) =>{
       this.medOffices = data;
+      console.log(this.medOffices);
     })
     }
     deleteOffice(id){

@@ -20,12 +20,8 @@ import { ContractsComponent } from './content/contracts/contracts.component';
 import { PrescriptionsComponent } from './content/prescriptions/prescriptions.component';
 import { RefferalsComponent } from './content/refferals/refferals.component';
 import { StartPageComponent } from './start-page/start-page.component';
-import { UsersComponent } from './content/User_Menu_Position/users/users.component';
-import { UserDetailsComponent } from './content/User_Menu_Position/users/user-details/user-details.component';
-import { RootsComponent } from './content/User_Menu_Position/roots/roots.component';
-import { NursesComponent } from './content/User_Menu_Position/nurses/nurses.component';
-import { DoctorsComponent } from './content/User_Menu_Position/doctors/doctors.component';
-import { PatientsComponent } from './content/User_Menu_Position/patients/patients.component';
+import { UsersComponent } from './content/users/users.component';
+import { UserDetailsComponent } from './content/users/user-details/user-details.component';
 import { SignOfficeComponent } from './content/departments/sign-office/sign-office.component';
 import { AddDepartmentComponent } from './content/departments/add-department/add-department.component';
 import { AllDepartmentsComponent } from './content/departments/all-departments/all-departments.component';
@@ -34,11 +30,19 @@ import { DepartmentDetailComponent } from './content/departments/department-deta
 import { AddOfficeComponent } from './content/med-offices/add-office/add-office.component';
 import { AllOfficesComponent } from './content/med-offices/all-offices/all-offices.component';
 import { OfficesDetailsComponent } from './content/med-offices/offices-details/offices-details.component';
+import { UsersListComponent } from './content/users/users-list/users-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id', component: UserDetailsComponent },
+  { path: 'users', component: UsersComponent , children : [
+    {path: '', component: UsersListComponent, data :{type : 'all'}},
+    {path: 'roots', component: UsersListComponent, data :{type : 'roots'}},
+    {path: 'doctors', component: UsersListComponent, data :{type : 'doctors'}},
+    {path: 'nurses', component: UsersListComponent, data :{type : 'nurses'}},
+    {path: 'patients', component: UsersListComponent, data :{type : 'patients'}},
+    {path: ':id', component: UserDetailsComponent},
+  ]},
+
   { path: 'departments', component: DepartmentsComponent, children : [
     {path: '', component: AllDepartmentsComponent},
     {path: 'add', component: AddDepartmentComponent},
@@ -49,21 +53,6 @@ const appRoutes: Routes = [
     {path: 'add', component: AddOfficeComponent},
     {path: ':id', component: OfficesDetailsComponent},
   ]},
-  
-
-
-
-  
-
-  // {
-  //   path: 'heroes',
-  //   component: HeroListComponent,
-  //   data: { title: 'Heroes List' }
-  // },
-  // { path: '',
-  //   redirectTo: '/heroes',
-  //   pathMatch: 'full'
-  // },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -87,17 +76,14 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     StartPageComponent,
     UserDetailsComponent,
-    RootsComponent,
-    NursesComponent,
-    DoctorsComponent,
-    PatientsComponent,
     SignOfficeComponent,
     AddDepartmentComponent,
     AllDepartmentsComponent,
     DepartmentDetailComponent,
     AddOfficeComponent,
     AllOfficesComponent,
-    OfficesDetailsComponent
+    OfficesDetailsComponent,
+    UsersListComponent,
 
 
   ],

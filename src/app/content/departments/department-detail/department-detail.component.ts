@@ -50,7 +50,7 @@ export class DepartmentDetailComponent implements OnInit {
   }
   deleteDepartment()
   {
-    console.log("jestem");
+    console.log("jestem + "+this.department.id);
     this.http.deleteDepartment(this.department.id).subscribe(
       ()=>console.log("succcess"), 
       (error)=>console.log("error: "+ error))
