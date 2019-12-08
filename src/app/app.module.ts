@@ -31,16 +31,20 @@ import { AddOfficeComponent } from './content/med-offices/add-office/add-office.
 import { AllOfficesComponent } from './content/med-offices/all-offices/all-offices.component';
 import { OfficesDetailsComponent } from './content/med-offices/offices-details/offices-details.component';
 import { UsersListComponent } from './content/users/users-list/users-list.component';
+import { AddUserComponent } from './content/users/add-user/add-user.component';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'users', component: UsersComponent , children : [
     {path: '', component: UsersListComponent, data :{type : 'all'}},
     {path: 'roots', component: UsersListComponent, data :{type : 'roots'}},
     {path: 'doctors', component: UsersListComponent, data :{type : 'doctors'}},
     {path: 'nurses', component: UsersListComponent, data :{type : 'nurses'}},
     {path: 'patients', component: UsersListComponent, data :{type : 'patients'}},
+    {path: 'add', component: AddUserComponent},
     {path: ':id', component: UserDetailsComponent},
+    
   ]},
 
   { path: 'departments', component: DepartmentsComponent, children : [
@@ -84,6 +88,7 @@ const appRoutes: Routes = [
     AllOfficesComponent,
     OfficesDetailsComponent,
     UsersListComponent,
+    AddUserComponent,
 
 
   ],
