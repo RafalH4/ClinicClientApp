@@ -66,4 +66,11 @@ export class UsersListComponent implements OnInit {
     })
   }
 
+  remove(id: any){
+    this.httpUsers.deleteUser(id).subscribe(
+      ()=>this.ngOnInit(),
+      (error)=>console.log(error)
+    )
+  }
+
 }

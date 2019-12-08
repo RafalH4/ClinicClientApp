@@ -29,7 +29,7 @@
         <td>{{user.phoneNumber}}</td>
         <td>{{user.email}}</td>
         <td><button routerLink="/users/{{user.id}}" type="button" class="btn btn-primary mr-1">Więcej</button>
-          <button type="button" class="btn btn-danger">Usuń</button></td>
+          <button type="button" class="btn btn-danger" (click)="remove(user.id)">Usuń</button></td>
       </tr>
     </tbody>
   </table>

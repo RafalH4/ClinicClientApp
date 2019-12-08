@@ -23,7 +23,10 @@ export class UsersService {
   updateUser(model : any)
   {
     console.log("model:")
-   // console.log(model);
     return this.http.put(this.baseUrl, model)
+  }
+  deleteUser(id: any)
+  {
+    return this.http.delete(this.baseUrl + id);
   }
 }
