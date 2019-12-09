@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,10 +33,15 @@ import { AllOfficesComponent } from './content/med-offices/all-offices/all-offic
 import { OfficesDetailsComponent } from './content/med-offices/offices-details/offices-details.component';
 import { UsersListComponent } from './content/users/users-list/users-list.component';
 import { AddUserComponent } from './content/users/add-user/add-user.component';
+import { AddComponent } from './content/appointments/add/add.component';
+import { AllContractsComponent } from './content/contracts/all-contracts/all-contracts.component';
+import { AddContractComponent } from './content/contracts/add-contract/add-contract.component';
+
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'appointments', component: AppointmentsComponent },
   { path: 'users', component: UsersComponent , children : [
     {path: '', component: UsersListComponent, data :{type : 'all'}},
     {path: 'roots', component: UsersListComponent, data :{type : 'roots'}},
@@ -43,10 +49,8 @@ const appRoutes: Routes = [
     {path: 'nurses', component: UsersListComponent, data :{type : 'nurses'}},
     {path: 'patients', component: UsersListComponent, data :{type : 'patients'}},
     {path: 'add', component: AddUserComponent},
-    {path: ':id', component: UserDetailsComponent},
-    
+    {path: ':id', component: UserDetailsComponent}
   ]},
-
   { path: 'departments', component: DepartmentsComponent, children : [
     {path: '', component: AllDepartmentsComponent},
     {path: 'add', component: AddDepartmentComponent},
@@ -57,6 +61,10 @@ const appRoutes: Routes = [
     {path: 'add', component: AddOfficeComponent},
     {path: ':id', component: OfficesDetailsComponent},
   ]},
+  { path: 'contracts', component: ContractsComponent, children: [
+    {path: '', component: AllContractsComponent},
+    {path: 'add', component: AddContractComponent},
+  ] },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -89,8 +97,9 @@ const appRoutes: Routes = [
     OfficesDetailsComponent,
     UsersListComponent,
     AddUserComponent,
-
-
+    AddComponent,
+    AllContractsComponent,
+    AddContractComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +108,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     AuthService
