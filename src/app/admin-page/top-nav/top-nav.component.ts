@@ -12,4 +12,9 @@ export class TopNavComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout()
+  {
+    localStorage.removeItem('token');
+  }
+
 }
