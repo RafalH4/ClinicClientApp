@@ -1,4 +1,4 @@
-<div class="text-center main">
+<div *ngIf="!registerMode" class="text-center main">
         <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()">
                 <img src="assets/img/logo.png">
                 <div class="login-form">
@@ -27,8 +27,11 @@
                     <div class="checkbox mb-3"></div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
-                    Nie masz konta? <a href="#">Zarejestruj się </a> 
+                    Nie masz konta? <a (click)="changeMode()">Zarejestruj się </a> 
                 </div>
         </form>
+</div>
+<div *ngIf="registerMode">
+        <app-register></app-register>
 </div>
 

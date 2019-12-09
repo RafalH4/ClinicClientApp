@@ -42,13 +42,13 @@ export class RegisterComponent implements OnInit {
       houseNumber: ['', Validators.required],
       phoneNumber: ['', Validators.required],
 
-      email: ['', Validators.email, this.authService],
+      email: ['', Validators.email],
       password: ['', Validators.required],
       password2: ['', Validators.required]
     }); 
   }
   register() {
-    this.authService.register(this.modelForm.value).subscribe(() =>{
+    this.authService.addNewPatient(this.modelForm.value).subscribe(() =>{
       console.log('registration successful');
     },error => {
       console.log(error);

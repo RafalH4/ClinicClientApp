@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
   submitted: boolean;
+  registerMode: boolean;
   constructor(private formBuilder : FormBuilder,
               private authService: AuthService) { }
 
@@ -23,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.submitted=true;
-
     if (this.loginForm.invalid) {
       return;
     }
@@ -33,5 +33,9 @@ export class LoginComponent implements OnInit {
     }, error => {
       console.log('Failed to login');
     });
+  }
+
+  changeMode(){
+    this.registerMode = !this.registerMode;
   }
 }
