@@ -36,6 +36,7 @@ import { AddUserComponent } from './content/users/add-user/add-user.component';
 import { AddComponent } from './content/appointments/add/add.component';
 import { AllContractsComponent } from './content/contracts/all-contracts/all-contracts.component';
 import { AddContractComponent } from './content/contracts/add-contract/add-contract.component';
+import { ContractDetailComponent } from './content/contracts/contract-detail/contract-detail.component';
 
 
 const appRoutes: Routes = [
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
   { path: 'contracts', component: ContractsComponent, children: [
     {path: '', component: AllContractsComponent},
     {path: 'add', component: AddContractComponent},
+    {path: ':id', component: ContractDetailComponent},
   ] },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -99,7 +101,8 @@ const appRoutes: Routes = [
     AddUserComponent,
     AddComponent,
     AllContractsComponent,
-    AddContractComponent
+    AddContractComponent,
+    ContractDetailComponent
   ],
   imports: [
     BrowserModule,

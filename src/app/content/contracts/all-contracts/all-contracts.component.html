@@ -1,1 +1,24 @@
-<p>all-contracts works!</p>
+<h3>Wszystkie oddziały</h3>
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">L.p</th>
+          <th scope="col">Lekarz</th>
+          <th scope="col">Oddział</th>
+          <th scope="col">Data podpisania</th>
+          <th scope="col">Więcej</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contract of contracts; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{contract.doctor.firstName}}</td>
+          <td>{{contract.department.name}}</td>
+          <td>{{contract.signedAt | date: 'dd/MM/yyyy'}}</td>
+          <td>
+            <button routerLink="/contracts/{{contract.id}}" type="button" class="btn btn-primary mr-1">Więcej</button>
+            <button type="button" class="btn btn-danger" (click)="deleteContract(contract.id)">Usuń</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
