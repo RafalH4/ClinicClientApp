@@ -30,11 +30,12 @@ export class DepartmentDetailComponent implements OnInit {
 
       this.http.getById(this.param).subscribe(((data: any) => {
         this.department =data;
+        console.log(this.department);
       }));
 
       this.httpContract.getContractsByDepartmentId(this.param).subscribe((data: any[])=>{
         this.contracts = data;
-        console.log(this.contracts);
+
       })
   }
 

@@ -3,8 +3,18 @@
 
     <p>Nazwa: {{department.name}}</p>
     <p>Numer telefonu: {{department.phoneNumber}}</p>
-    <p>Gabinety: {{department.medOffices}}</p>
-    <p>Kontrakty: </p>
+    <h3>Gabinety:</h3>
+    <div class="row">
+        <div *ngFor="let medOffice of department.medOffices " class="card ml-3 mt-3" style="width: 18rem;">
+            <div class="card-header">
+                Nr gabinetu: <b>{{medOffice.officeNumber}}</b>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Opis: <b>{{medOffice.description}}</b></li>
+            </ul>
+        </div>
+    </div>
+    <h3>Kontrakty:</h3>
     <div class="row">
         <div *ngFor="let contract of contracts " class="card ml-3 mt-3" style="width: 18rem;">
             <div class="card-header">
