@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
   selector: 'app-all-contracts',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-contracts.component.css']
 })
 export class AllContractsComponent implements OnInit {
+  contracts =[];
 
-  constructor() { }
+  constructor(private http: ContractService) { }
 
   ngOnInit() {
+    this.http.getContracts().subscribe((data : any[]) => {
+      this.contracts = data;
+      console.log(this.contracts);
+    })
+  }
+
+  deleteContract(id){
+
   }
 
 }
