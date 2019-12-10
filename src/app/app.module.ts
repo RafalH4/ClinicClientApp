@@ -32,6 +32,8 @@ import { AllOfficesComponent } from './content/med-offices/all-offices/all-offic
 import { OfficesDetailsComponent } from './content/med-offices/offices-details/offices-details.component';
 import { UsersListComponent } from './content/users/users-list/users-list.component';
 import { AddUserComponent } from './content/users/add-user/add-user.component';
+import { AllContractsComponent } from './content/contracts/all-contracts/all-contracts.component';
+import { AddContractComponent } from './content/contracts/add-contract/add-contract.component';
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
@@ -57,6 +59,10 @@ const appRoutes: Routes = [
     {path: 'add', component: AddOfficeComponent},
     {path: ':id', component: OfficesDetailsComponent},
   ]},
+  { path: 'contracts', component: ContractsComponent, children: [
+    {path: '', component: AllContractsComponent},
+    {path: 'add', component: AddContractComponent},
+  ] },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -89,6 +95,8 @@ const appRoutes: Routes = [
     OfficesDetailsComponent,
     UsersListComponent,
     AddUserComponent,
+    AllContractsComponent,
+    AddContractComponent
 
 
   ],
