@@ -1,41 +1,52 @@
 <div *ngIf="!editMode">
-        <h1> Informacje szczegółowe o oddziale: {{department.name}} </h1>
-        
-        <p>Nazwa: {{department.name}}</p>
-        <p>Numer telefonu: {{department.phoneNumber}}</p>
-        <p>Gabinety: {{department.medOffices}}</p>
-        <p>Kontrakty: {{department.contracts}}</p>
+    <h1> Informacje szczegółowe o oddziale: {{department.name}} </h1>
 
+    <p>Nazwa: {{department.name}}</p>
+    <p>Numer telefonu: {{department.phoneNumber}}</p>
+    <p>Gabinety: {{department.medOffices}}</p>
+    <p>Kontrakty: </p>
+    <div class="row">
+        <div *ngFor="let contract of contracts " class="card ml-3 mt-3" style="width: 18rem;">
+            <div class="card-header">
+                Lekarz: <b>{{contract.doctor.firstName}} {{contract.doctor.secondName}}</b>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Data podpisania kontraktu: <b>{{contract.signedAt | date: 'dd-MM-yyyy'}}</b>
+                </li>
+                <li class="list-group-item">Okres(miesiące): <b>{{contract.numberOfMonths}}</b></li>
+                <li class="list-group-item">Liczba godzin: <b>{{contract.hoursPerMonth}}</b></li>
+                <li class="list-group-item">Wynagrodzenie: <b>{{contract.salaryPerMonth}} PLN</b></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="mt-5">
         <button type="button" class="btn btn-primary mr-1" (click)="editDepartment()">Edycja</button>
-        <button routerLink="/users" type="button" class="btn btn-secondary">Lista użytkowników</button>
+        <button routerLink="/departments" type="button" class="btn btn-secondary">Lista oddziałów</button>
         <button type="button" class="btn btn-danger" (click)="deleteDepartment()">Usuń</button>
-        
+    </div>
+
+</div>
+<div *ngIf="editMode">
+    <form [formGroup]="editDepartForm" (ngSubmit)="saveDepartment()">
+        <div class="row">
+            <div class="form-group col-12">
+                <input type="text" class="form-control" formControlName="name">
+            </div>
+            <div class="form-group col-12">
+                <input type="text" class="form-control" formControlName="phoneNumber">
+            </div>
+            <div class="form-group col-12">
+                <input type="text" class="form-control" formControlName="description">
+            </div>
         </div>
-        <div *ngIf="editMode">
-                <form [formGroup]="editDepartForm" (ngSubmit)="saveDepartment()">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <input type="text" class="form-control" formControlName="name">
-                            </div>
-                            <div class="form-group col-12">
-                                <input type="text" class="form-control" formControlName="phoneNumber">
-                            </div>
-                            <div class="form-group col-12">
-                                <input type="text" class="form-control" formControlName="description">
-                            </div>
-                        </div>
-                        <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary mr-1">Zapisz</button>
-                            <button type="button" class="btn btn-danger" (click)="changeMode()">Anuluj</button>
-                        </div>
-                        
-                    </form>
-        
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary mr-1">Zapisz</button>
+            <button type="button" class="btn btn-danger" (click)="changeMode()">Anuluj</button>
         </div>
-        
-        
-        
-        
-        
-        
-        
+
+    </form>
+
+</div>

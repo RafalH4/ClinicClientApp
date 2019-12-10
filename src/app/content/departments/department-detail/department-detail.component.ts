@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DepartmentsService } from 'src/app/services/departments.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Contract } from 'src/app/models/Contract';
+import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
   selector: 'app-department-detail',
@@ -12,9 +14,11 @@ export class DepartmentDetailComponent implements OnInit {
   editMode: boolean = false;
   param: string = "";
   editDepartForm : FormGroup;
-  department: any = {}
+  department: any = {};
+  contracts: any[];
   constructor(private route: ActivatedRoute, 
               private http: DepartmentsService, 
+              private httpContract  : ContractService,
               private formBuilder : FormBuilder,
               private router: Router, ) { }
 
@@ -26,9 +30,12 @@ export class DepartmentDetailComponent implements OnInit {
 
       this.http.getById(this.param).subscribe(((data: any) => {
         this.department =data;
-
-        console.log(this.department);
       }));
+
+      this.httpContract.getContractsByDepartmentId(this.param).subscribe((data: any[])=>{
+        this.contracts = data;
+        console.log(this.contracts);
+      })
   }
 
   editDepartment() {
