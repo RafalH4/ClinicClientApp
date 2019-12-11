@@ -24,9 +24,9 @@ export class DepartmentsService {
   {
     return this.http.get(this.baseUrl +id)
   }
-  editDepartment(model: any)
+  editDepartment(model: any, id: any)
   {
-    return this.http.put(this.baseUrl, model)
+    return this.http.put(this.baseUrl+id, model)
   }
   deleteDepartment(id: string)
   {

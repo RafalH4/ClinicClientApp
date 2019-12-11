@@ -1,1 +1,39 @@
-<p>offices-details works!</p>
+<div *ngIf="!editMode">
+        <h1> Informacje szczegółowe o gabinecie nr {{office.officeNumber}} </h1>
+    
+        <p>Numer gabinetu: {{office.officeNumber}}</p>
+        <p>Opis: {{office.description}}</p>
+        <p>Oddział: {{office.department.name}}</p>
+        <p>Numer telefonu do oddziału: {{office.department.phoneNumber}}</p>
+    
+        <div class="mt-5">
+            <button type="button" class="btn btn-primary mr-1" (click)="editOffice()">Edycja</button>
+            <button routerLink="/medOffices" type="button" class="btn btn-secondary">Lista gabinetów</button>
+            <button type="button" class="btn btn-danger" (click)="deleteOffice()">Usuń</button>
+        </div>
+    
+    </div>
+    <div *ngIf="editMode">
+        <form [formGroup]="editOfficeForm" (ngSubmit)="saveOffice()">
+            <div class="row">
+                <div class="form-group col-12">
+                    <input type="number" class="form-control" formControlName="officeNumber">
+                </div>
+                <div class="form-group col-12">
+                    <input type="text" class="form-control" formControlName="description">
+                </div>
+                <div class="form-group col-12">
+                        <select class="form-control"formControlName="departmentName">
+                                <option *ngFor="let department of departments" value="{{department.name}}">{{department.name}}</option>
+                              </select>
+                    
+                </div>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary mr-1">Zapisz</button>
+                <button type="button" class="btn btn-danger" (click)="changeMode()">Anuluj</button>
+            </div>
+    
+        </form>
+    
+    </div>

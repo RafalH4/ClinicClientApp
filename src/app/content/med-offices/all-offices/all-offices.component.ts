@@ -18,6 +18,9 @@ export class AllOfficesComponent implements OnInit {
     })
     }
     deleteOffice(id){
+      this.http.deleteMedOffice(id).subscribe(
+        ()=>this.ngOnInit(),
+        (error)=> console.log(error))
   }
 }
 

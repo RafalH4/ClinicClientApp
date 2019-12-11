@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DepartmentsService } from 'src/app/services/departments.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Contract } from 'src/app/models/Contract';
 import { ContractService } from 'src/app/services/contract.service';
 
 @Component({
@@ -20,7 +19,7 @@ export class DepartmentDetailComponent implements OnInit {
               private http: DepartmentsService, 
               private httpContract  : ContractService,
               private formBuilder : FormBuilder,
-              private router: Router, ) { }
+              private router: Router ) { }
 
   ngOnInit() {
     this.route.paramMap.forEach(({params}:Params)=>{
@@ -50,7 +49,7 @@ export class DepartmentDetailComponent implements OnInit {
 
   saveDepartment()
   {
-    this.http.editDepartment(this.editDepartForm.value).subscribe(()=>{
+    this.http.editDepartment(this.editDepartForm.value, this.param).subscribe(()=>{
       this.router.navigate([`../../departments`], { relativeTo: this.route })
     }, (error)=>{
       console.log(error);
@@ -64,9 +63,5 @@ export class DepartmentDetailComponent implements OnInit {
       (error)=>console.log("error: "+ error))
   }
 
-  deleteDepart()
-  {
-
-  }
 
 }

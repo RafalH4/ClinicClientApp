@@ -1,6 +1,12 @@
 <h2>Użytkownicy</h2>
 <ul class="nav justify-content-center">
   <li class="nav-item">
+      <a class="nav-link" routerLink="/users/add">
+        <span class="fa fa-user-plus fa-fw mr-3"></span> 
+        <span class="menu-collapsed">Dodaj użytkownika</span>
+      </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link active" routerLink="/users">Wszyscy użytkownicy</a>
   </li>
   <li class="nav-item">
@@ -15,5 +21,6 @@
   <li class="nav-item">
     <a class="nav-link" routerLink="/users/patients">Pacjenci</a>
   </li>
+  
 </ul>
 <router-outlet></router-outlet>
