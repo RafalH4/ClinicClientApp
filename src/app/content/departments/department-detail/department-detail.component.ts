@@ -62,6 +62,9 @@ export class DepartmentDetailComponent implements OnInit {
       ()=>console.log("succcess"), 
       (error)=>console.log("error: "+ error))
   }
+  changeMode() {
+    this.editMode=!this.editMode;
+  }
 
 
 }

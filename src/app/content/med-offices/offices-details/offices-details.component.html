@@ -3,8 +3,8 @@
     
         <p>Numer gabinetu: {{office.officeNumber}}</p>
         <p>Opis: {{office.description}}</p>
-        <p>Oddział: {{office.department.name}}</p>
-        <p>Numer telefonu do oddziału: {{office.department.phoneNumber}}</p>
+        <p>Oddział: {{office.department?.name}}</p>
+        <p>Numer telefonu do oddziału: {{office.department?.phoneNumber}}</p>
     
         <div class="mt-5">
             <button type="button" class="btn btn-primary mr-1" (click)="editOffice()">Edycja</button>

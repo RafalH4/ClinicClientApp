@@ -19,7 +19,10 @@ export class AllContractsComponent implements OnInit {
   }
 
   deleteContract(id){
-
+    this.http.deleteContract(id).subscribe(
+      ()=>this.ngOnInit(),
+      (error)=>console.log(error)
+    )
   }
 
 }

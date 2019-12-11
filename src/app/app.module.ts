@@ -39,6 +39,7 @@ import { AddContractComponent } from './content/contracts/add-contract/add-contr
 import { ContractDetailComponent } from './content/contracts/contract-detail/contract-detail.component';
 
 
+
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'register', component: RegisterComponent },
@@ -102,7 +103,7 @@ const appRoutes: Routes = [
     AddComponent,
     AllContractsComponent,
     AddContractComponent,
-    ContractDetailComponent
+    ContractDetailComponent  
   ],
   imports: [
     BrowserModule,
@@ -111,7 +112,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+
   ],
   providers: [
     AuthService

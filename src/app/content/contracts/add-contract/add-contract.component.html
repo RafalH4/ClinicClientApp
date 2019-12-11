@@ -1,1 +1,43 @@
-<p>add-contract works!</p>
+<h3>Utwórz kontrakt z lekarzem</h3>
+<form [formGroup]="newContractForm" (ngSubmit)="addContract()">
+
+    <div class="form-group">
+        <label>Wybierz oddział</label>
+        <select class="form-control" formControlName="departmentId">
+            <option *ngFor="let department of departments" value="{{department.id}}">{{department.name}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Wybierz lekarza</label>
+        <select class="form-control" formControlName="doctorId">
+            <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.firstName}} {{doctor.secondName}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Data rozpoczęcia kontraktu</label>
+        <input type="date" class="form-control" formControlName="startDate">
+    </div>
+    <div class="form-group">
+            <label>Czas trwania (w miesiącach)</label>
+            <input type="number" class="form-control" formControlName="numberOfMonths">
+        </div>
+
+    <div class="form-group">
+            <label>Liczba godzin w miesiącu</label>
+            <input type="number" class="form-control" formControlName="hoursPerMonth">
+    </div>
+
+    <div class="form-group">
+                <label>Wypłata</label>
+                <input type="number" class="form-control" formControlName="salaryPerMonth">
+    </div>
+
+
+    <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary mr-1">Dodaj</button>
+            <button type="button" class="btn btn-danger" (click)="changeMode()">Anuluj</button>
+    </div>
+
+</form>

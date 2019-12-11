@@ -1,1 +1,45 @@
-<p>contract-detail works!</p>
+<div *ngIf="!editMode">
+        <h3> Informacje szczegółowe o kontrakcie lekarza: <u>{{contract.doctorFullName}}</u>  z oddziałem: <u>{{contract.departmentName}}</u></h3>
+    
+        <p>Lekarz: {{contract.doctorFullName}}</p>
+        <p>Oddział: {{contract.departmentName}}</p>
+        <p>Data podpisania: {{contract.signedAt | date: 'dd-MM-yyyy'}}</p>
+        <p>Okres trwania kontraktu (w miesiącach): {{contract.numberOfMonths}}</p>
+        <p>Liczba godzin/miesiąc: {{contract.hoursPerMonth}}</p>
+        <p>Wynagrodzenie miesięczne: {{contract.salaryPerMonth}}</p>
+        <div class="mt-5">
+            <button type="button" class="btn btn-primary mr-1" (click)="editContract()">Edycja</button>
+            <button routerLink="/medOffices" type="button" class="btn btn-secondary">Kontrakty</button>
+            <button type="button" class="btn btn-danger" (click)="deleteOffice()">Usuń</button>
+        </div>
+    
+    </div>
+    <div *ngIf="editMode">
+            <p>Lekarz: <b>{{contract.doctorFullName}}</b></p>
+            <p>Oddział: <b>{{contract.departmentName}}</b></p>
+            <p>Data podpisania: <b>{{contract.signedAt | date: 'dd-MM-yyyy'}}</b></p>
+
+            <form [formGroup]="editContractForm" (ngSubmit)="saveContract()">
+
+                    <div class="form-group">
+                            <label>Czas trwania (w miesiącach)</label>
+                            <input type="number" class="form-control" formControlName="numberOfMonths">
+                        </div>
+                
+                    <div class="form-group">
+                            <label>Liczba godzin w miesiącu</label>
+                            <input type="number" class="form-control" formControlName="hoursPerMonth">
+                    </div>
+                
+                    <div class="form-group">
+                                <label>Wypłata</label>
+                                <input type="number" class="form-control" formControlName="salaryPerMonth">
+                    </div>
+            
+                    <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary mr-1">Zapisz</button>
+                            <button type="button" class="btn btn-danger" (click)="changeMode()">Anuluj</button>
+                    </div>
+                </form>
+    
+    </div>
