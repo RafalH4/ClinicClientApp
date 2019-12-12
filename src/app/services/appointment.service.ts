@@ -13,4 +13,9 @@ export class AppointmentService {
   {
     return this.http.post(this.baseUrl, model);
   }
+
+  getAppointments(params: any)
+  {
+    return this.http.get(this.baseUrl+params)
+  }
 }

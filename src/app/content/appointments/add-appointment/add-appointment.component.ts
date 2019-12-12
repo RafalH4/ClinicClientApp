@@ -45,7 +45,7 @@ export class AddAppointmentComponent implements OnInit  {
     for (var d = new Date(this.newAppointments.value.startDate); d <=new Date(this.newAppointments.value.endDate); d.setDate(d.getDate() + 1)) {
         this.dates.push(new Date(d));
     }
-
+console.log("daty:");
     console.log(this.dates);
 
   }
@@ -55,7 +55,7 @@ export class AddAppointmentComponent implements OnInit  {
     console.log( this.dates);
   }
   addAppointments() {
-    console.log(this.newAppointments.value)
+    this.newAppointments.value.dates=this.dates;
     this.http.addAppointments(this.newAppointments.value).subscribe(
       ()=>console.log("success"),
       (error) => console.log(error)
