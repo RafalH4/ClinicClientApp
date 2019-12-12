@@ -5,6 +5,7 @@ import { PatientsService } from 'src/app/services/userServices/patients.service'
 import { MedOfficeService } from 'src/app/services/med-office.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AppointmentService } from 'src/app/services/appointment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-appointments',
@@ -18,6 +19,8 @@ export class AllAppointmentsComponent implements OnInit {
   departments: any[];
   appointments: any[];
   stringParams: string="";
+  selectedAppointment: string;
+  patientIdToAdd: string;
 
   appointmentSearchForm: FormGroup;
 
@@ -27,7 +30,7 @@ export class AllAppointmentsComponent implements OnInit {
     private httpDoctor: DoctorsService,
     private httpPatient: PatientsService,
     private httpMedOffice: MedOfficeService,
-    private formBuilder: FormBuilder,) { }
+    private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.httpDepartment.getAllDepartments().subscribe((data: any[]) => {
@@ -51,7 +54,7 @@ export class AllAppointmentsComponent implements OnInit {
       doctorId: ['',],
       patientId: ['',],
       medOfficeId: ['',],
-      isFree: [false,],
+      isFree: [false,]
     })
   }
   getAppointments(){
@@ -81,5 +84,29 @@ export class AllAppointmentsComponent implements OnInit {
     })
 
   }
+
+  deleteAppointment(id: any){
+    this.http.deleteAppointment(id).subscribe(
+      ()=>{
+        this.http.getAppointments(this.stringParams).subscribe((data: any[])=>{
+          this.appointments = data;
+          console.log(this.appointments);
+      },
+      (error)=>console.log(error))
+  })
+}
+
+addPatient(id){
+  if(this.selectedAppointment==id)
+    this.selectedAppointment=""
+  else
+    this.selectedAppointment=id;
+}
+savePatient()
+{
+  console.log(this.patientIdToAdd);
+}
+
+
 
 }

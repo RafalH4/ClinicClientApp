@@ -18,4 +18,14 @@ export class AppointmentService {
   {
     return this.http.get(this.baseUrl+params)
   }
+
+  deleteAppointment(id: any)
+  {
+    return this.http.delete(this.baseUrl+id)
+  }
+
+  addUserToAppointment(model: any)
+  {
+
+  }
 }

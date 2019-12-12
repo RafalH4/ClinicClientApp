@@ -38,6 +38,9 @@ import { AddContractComponent } from './content/contracts/add-contract/add-contr
 import { ContractDetailComponent } from './content/contracts/contract-detail/contract-detail.component';
 import { AddAppointmentComponent } from './content/appointments/add-appointment/add-appointment.component';
 import { AllAppointmentsComponent } from './content/appointments/all-appointments/all-appointments.component';
+import { AddPatientToAppointmentComponent } from './content/appointments/add-patient-to-appointment/add-patient-to-appointment.component';
+
+
 
 
 
@@ -47,6 +50,7 @@ const appRoutes: Routes = [
   { path: 'appointments', component: AppointmentsComponent, children : [
     {path: '', component: AllAppointmentsComponent},
     {path: 'add', component: AddAppointmentComponent},
+    {path: 'addPatient/:id', component: AddPatientToAppointmentComponent},
   ]},
   { path: 'users', component: UsersComponent , children : [
     {path: '', component: UsersListComponent, data :{type : 'all'}},
@@ -108,7 +112,8 @@ const appRoutes: Routes = [
     AddContractComponent,
     ContractDetailComponent,
     AddAppointmentComponent,
-    AllAppointmentsComponent 
+    AllAppointmentsComponent,
+    AddPatientToAppointmentComponent
   ],
   imports: [
     BrowserModule,

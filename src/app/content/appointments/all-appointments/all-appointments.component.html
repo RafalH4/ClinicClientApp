@@ -1,68 +1,82 @@
-<form [formGroup]="appointmentSearchForm" (ngSubmit)="getAppointments()" >
-<div class="row">
-<div class="form-group col-md-2">
-    <label>Od dnia:</label>
-    <input type="date" class="form-control" formControlName="startDate">
-</div>
+<form [formGroup]="appointmentSearchForm" (ngSubmit)="getAppointments()">
+    <div class="row">
+        <div class="form-group col-md-2">
+            <label>Od dnia:</label>
+            <input type="date" class="form-control" formControlName="startDate">
+        </div>
 
-<div class="form-group col-md-2">
-    <label>Do dnia:</label>
-    <input type="date" class="form-control" formControlName="endDate">
-</div>
+        <div class="form-group col-md-2">
+            <label>Do dnia:</label>
+            <input type="date" class="form-control" formControlName="endDate">
+        </div>
 
-<div class="form-group col-md-2">
-    <label>Oddział</label>
-    <select class="form-control" formControlName="departmentName">
-        <option>Wybierz oddział</option>
-        <option *ngFor="let department of departments" value="{{department.name}}">{{department.name}}</option>
-    </select>
-</div>
+        <div class="form-group col-md-2">
+            <label>Oddział</label>
+            <select class="form-control" formControlName="departmentName">
+                <option>Wybierz oddział</option>
+                <option *ngFor="let department of departments" value="{{department.name}}">{{department.name}}</option>
+            </select>
+        </div>
 
-<div class="form-group col-md-2">
-    <label>Lekarz</label>
-    <select class="form-control" formControlName="doctorId">
-        <option>Wybierz lekarza</option>
-        <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.firstName}} {{doctor.secondName}}</option>
-    </select>
-</div>
+        <div class="form-group col-md-2">
+            <label>Lekarz</label>
+            <select class="form-control" formControlName="doctorId">
+                <option>Wybierz lekarza</option>
+                <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.firstName}} {{doctor.secondName}}
+                </option>
+            </select>
+        </div>
 
-<div class="form-group col-md-2">
-    <label>Gabinet</label>
-    <select class="form-control" formControlName="medOfficeId">
-        <option>Wybierz gabinet</option>
-        <option *ngFor="let medOffice of medOffices" value="{{medOffice.id}}">{{medOffice.officeNumber}}</option>
-    </select>
-</div>
+        <div class="form-group col-md-2">
+            <label>Gabinet</label>
+            <select class="form-control" formControlName="medOfficeId">
+                <option>Wybierz gabinet</option>
+                <option *ngFor="let medOffice of medOffices" value="{{medOffice.id}}">{{medOffice.officeNumber}}
+                </option>
+            </select>
+        </div>
 
-<div class="form-group col-md-2">
-    <label>Pacjent</label>
-    <select class="form-control" formControlName="patientId">
-        <option>Wybierz pacjenta</option>
-        <option *ngFor="let patient of patients" value="{{patient.id}}">{{patient.firstName}} {{patient.secondName}}</option>
-    </select>
-</div>
+        <div class="form-group col-md-2">
+            <label>Pacjent</label>
+            <select class="form-control" formControlName="patientId">
+                <option>Wybierz pacjenta</option>
+                <option *ngFor="let patient of patients" value="{{patient.id}}">{{patient.firstName}}
+                    {{patient.secondName}}</option>
+            </select>
+        </div>
 
-<div class="form-check form-check-inline ml-4">
-        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" formControlName="isFree">
-        <label class="form-check-label">Tylko wolne terminy</label>
-      </div>
+        <div class="form-check form-check-inline ml-4">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" formControlName="isFree">
+            <label class="form-check-label">Tylko wolne terminy</label>
+        </div>
 
 
-</div>
-<button class="col-12 btn btn-primary" type="submit">Pokaż</button>
+    </div>
+    <button class="col-12 btn btn-primary" type="submit">Pokaż</button>
 </form>
 
 <div class="row">
-        <div *ngFor="let appointment of appointments" class="card m-3" style="width: 18rem;">
-                <div class="card-header">
-                    <h3><b>{{appointment.departmentName}}</b></h3>
-                  Lekarz: <b>{{appointment.doctor.firstName}} {{appointment.doctor.secondName}}</b>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Data: {{appointment.date }}</li>
-                  <li class="list-group-item">Godzina: {{appointment.date | date:"hh:mm"}}</li>
-                  <li class="list-group-item">Numer gabinetu: {{appointment.medOffice.officeNumber}} </li>
-                  <li class="list-group-item"><button class="btn btn-primary">Zapisz</button> </li>
-                </ul>
-              </div>
+    <div *ngFor="let appointment of appointments" class="card m-3" style="width: 18rem;">
+        <div class="card-header">
+            <h3><b>{{appointment.departmentName}}</b></h3>
+            Lekarz: <b>{{appointment.doctor.firstName}} {{appointment.doctor.secondName}}</b>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Data: {{appointment.date | date:"yyyy-MM-dd" }}</li>
+            <li class="list-group-item">Godzina: {{appointment.date | date:"hh:mm"}}</li>
+            <li class="list-group-item">Numer gabinetu: {{appointment.medOffice.officeNumber}} </li>
+            <li class="list-group-item"><button class="btn btn-primary" (click)="addPatient(appointment.id)">Dodaj
+                    pacjenta</button>
+                <button class="btn btn-danger ml-2" (click)="deleteAppointment(appointment.id)">Usuń</button> </li>
+            <li class="list-group-item" *ngIf="appointment.id==selectedAppointment">
+                <label>Pacjent</label>
+                <select class="form-control" [(ngModel)]="patientIdToAdd">
+                    <option>Wybierz pacjenta</option>
+                    <option *ngFor="let patient of patients" value="{{patient.id}}">{{patient.firstName}}
+                        {{patient.secondName}}</option>
+                </select>
+                <button class="btn btn-primary" (click)="savePatient()">Zapisz na wizytę</button>
+            </li>
+        </ul>
+    </div>
 </div>
