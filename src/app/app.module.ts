@@ -33,17 +33,21 @@ import { AllOfficesComponent } from './content/med-offices/all-offices/all-offic
 import { OfficesDetailsComponent } from './content/med-offices/offices-details/offices-details.component';
 import { UsersListComponent } from './content/users/users-list/users-list.component';
 import { AddUserComponent } from './content/users/add-user/add-user.component';
-import { AddComponent } from './content/appointments/add/add.component';
 import { AllContractsComponent } from './content/contracts/all-contracts/all-contracts.component';
 import { AddContractComponent } from './content/contracts/add-contract/add-contract.component';
 import { ContractDetailComponent } from './content/contracts/contract-detail/contract-detail.component';
+import { AddAppointmentComponent } from './content/appointments/add-appointment/add-appointment.component';
+import { AllAppointmentsComponent } from './content/appointments/all-appointments/all-appointments.component';
 
 
 
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'appointments', component: AppointmentsComponent },
+  { path: 'appointments', component: AppointmentsComponent, children : [
+    {path: '', component: AllAppointmentsComponent},
+    {path: 'add', component: AddAppointmentComponent},
+  ]},
   { path: 'users', component: UsersComponent , children : [
     {path: '', component: UsersListComponent, data :{type : 'all'}},
     {path: 'roots', component: UsersListComponent, data :{type : 'roots'}},
@@ -100,10 +104,11 @@ const appRoutes: Routes = [
     OfficesDetailsComponent,
     UsersListComponent,
     AddUserComponent,
-    AddComponent,
     AllContractsComponent,
     AddContractComponent,
-    ContractDetailComponent  
+    ContractDetailComponent,
+    AddAppointmentComponent,
+    AllAppointmentsComponent 
   ],
   imports: [
     BrowserModule,

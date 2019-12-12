@@ -5,15 +5,12 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { AppointmentService } from 'src/app/services/appointment.service';
 
 
-
-
-
 @Component({
-  selector: 'app-appointments',
-  templateUrl: './appointments.component.html',
-  styleUrls: ['./appointments.component.css']
+  selector: 'app-add-appointment',
+  templateUrl: './add-appointment.component.html',
+  styleUrls: ['./add-appointment.component.css']
 })
-export class AppointmentsComponent implements OnInit {
+export class AddAppointmentComponent implements OnInit  {
 
   constructor(private httpDoctor: DoctorsService,
     private httpMedOffice: MedOfficeService,
@@ -45,9 +42,6 @@ export class AppointmentsComponent implements OnInit {
 }
 
   newRange(){
-    
-    var now = new Date();
-    var daysOfYear = [];
     for (var d = new Date(this.newAppointments.value.startDate); d <=new Date(this.newAppointments.value.endDate); d.setDate(d.getDate() + 1)) {
         this.dates.push(new Date(d));
     }

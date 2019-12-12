@@ -1,0 +1,57 @@
+<form [formGroup]="newAppointments" (ngSubmit)="addAppointments()" >
+    Daty:
+    <div class="row">
+      <div class="form-group col-6">
+        <label>Od</label>
+        <input type="date" class="form-control" formControlName="startDate">
+      </div>
+      <div class="form-group col-6">
+        <label>Do</label>
+        <input type="date" class="form-control" formControlName="endDate">
+      </div>
+    </div>
+    <button (click)="newRange()">Dodaj</button>
+    Wybrane daty:
+    <div class="row">
+      <div class="mr-4" *ngFor="let date of dates; let i = index">{{date | date: 'dd/MM/yyyy' }}
+        <span class="fa fa-minus-circle fa-fw mr-3" (click)="deleteDate(i)"></span>
+      </div>
+    
+    </div>
+    
+    Godziny:
+    <div class="row">
+        <div class="form-group col-6">
+          <label>Od</label>
+          <input type="time" class="form-control" formControlName="startHour">
+        </div>
+        <div class="form-group col-6">
+          <label>Do</label>
+          <input type="time" class="form-control" formControlName="endHour">
+        </div>
+      </div>
+    
+     
+      <div class="form-group">
+          <label> Czas wizyty:</label>
+          <input type="number" class="form-control" formControlName="rangeInMinutes">
+      </div>
+    
+      <div class="form-group">
+          <label>Wybierz lekarza</label>
+          <select class="form-control" formControlName="doctorId">
+              <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.firstName}} {{doctor.secondName}}</option>
+          </select>
+      </div>
+    
+      <div class="form-group">
+          <label>Wybierz gabinet</label>
+          <select class="form-control" formControlName="medOfficeId">
+              <option *ngFor="let medOffice of medOffices" value="{{medOffice.id}}">oddział: {{medOffice.department.name}} gabinet: {{medOffice.officeNumber}}</option>
+          </select>
+      </div>
+    
+      <button type="submit">Dodaj wizyty</button>
+    
+    </form>
+    
