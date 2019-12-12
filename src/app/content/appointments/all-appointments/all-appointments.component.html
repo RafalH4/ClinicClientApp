@@ -55,6 +55,7 @@
 <div class="row">
         <div *ngFor="let appointment of appointments" class="card m-3" style="width: 18rem;">
                 <div class="card-header">
+                    <h3><b>{{appointment.departmentName}}</b></h3>
                   Lekarz: <b>{{appointment.doctor.firstName}} {{appointment.doctor.secondName}}</b>
                 </div>
                 <ul class="list-group list-group-flush">

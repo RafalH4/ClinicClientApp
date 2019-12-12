@@ -10,8 +10,8 @@
         <input type="date" class="form-control" formControlName="endDate">
       </div>
     </div>
-    <button (click)="newRange()">Dodaj</button>
-    Wybrane daty:
+    <button class="btn btn-primary" (click)="newRange()">Dodaj</button>
+    <h3>Wybrane daty:</h3>
     <div class="row">
       <div class="mr-4" *ngFor="let date of dates; let i = index">{{date | date: 'dd/MM/yyyy' }}
         <span class="fa fa-minus-circle fa-fw mr-3" (click)="deleteDate(i)"></span>
@@ -51,7 +51,7 @@
           </select>
       </div>
     
-      <button type="submit">Dodaj wizyty</button>
+      <button class="btn btn-primary" type="submit">Dodaj wizyty</button>
     
     </form>
     
