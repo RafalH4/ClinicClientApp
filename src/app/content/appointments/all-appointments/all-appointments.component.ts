@@ -5,7 +5,6 @@ import { PatientsService } from 'src/app/services/userServices/patients.service'
 import { MedOfficeService } from 'src/app/services/med-office.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AppointmentService } from 'src/app/services/appointment.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-appointments',
@@ -21,6 +20,7 @@ export class AllAppointmentsComponent implements OnInit {
   stringParams: string="";
   selectedAppointment: string;
   patientIdToAdd: string;
+  assignment: any = {};
 
   appointmentSearchForm: FormGroup;
 
@@ -44,7 +44,9 @@ export class AllAppointmentsComponent implements OnInit {
     })
     this.httpMedOffice.getMedOffices().subscribe((data: any[]) => {
       this.medOffices = data;
-      console.log(this.medOffices)
+    })
+    this.http.getAppointments("").subscribe((data: any[])=> {
+      this.appointments = data
     })
 
     this.appointmentSearchForm = this.formBuilder.group({
@@ -68,10 +70,8 @@ export class AllAppointmentsComponent implements OnInit {
       this.stringParams=this.stringParams+"&departmentName="+this.appointmentSearchForm.value.departmentName;
     if(this.appointmentSearchForm.value.doctorId!="")
       this.stringParams=this.stringParams+"&doctorId="+this.appointmentSearchForm.value.doctorId;
-    if(this.appointmentSearchForm.value.doctorId!="")
-      this.stringParams=this.stringParams+"&doctorId="+this.appointmentSearchForm.value.doctorId;
     if(this.appointmentSearchForm.value.patientId!="")
-      this.stringParams=this.stringParams+"&doctorId="+this.appointmentSearchForm.value.patientId;
+      this.stringParams=this.stringParams+"&patientId="+this.appointmentSearchForm.value.patientId;
     if(this.appointmentSearchForm.value.medOfficeId!="")
       this.stringParams=this.stringParams+"&medOfficeId="+this.appointmentSearchForm.value.medOfficeId;
     if(this.appointmentSearchForm.value.isFree!=false)
@@ -104,6 +104,13 @@ addPatient(id){
 }
 savePatient()
 {
+  this.assignment.UserId = this.patientIdToAdd;
+  this.assignment.AppointmentId = this.selectedAppointment
+  this.http.addUserToAppointment(this.assignment).subscribe(
+    ()=>console.log("success"),
+    (error) => console.log(error)
+  )
+
   console.log(this.patientIdToAdd);
 }
 

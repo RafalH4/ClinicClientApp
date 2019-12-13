@@ -16,16 +16,17 @@ export class AppointmentService {
 
   getAppointments(params: any)
   {
-    return this.http.get(this.baseUrl+params)
+    return this.http.get(this.baseUrl+params);
   }
 
   deleteAppointment(id: any)
   {
-    return this.http.delete(this.baseUrl+id)
+    return this.http.delete(this.baseUrl+id);
   }
 
   addUserToAppointment(model: any)
   {
+    return this.http.post(this.baseUrl+"addUser", model);
 
   }
 }
