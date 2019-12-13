@@ -16,9 +16,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Menu3</a>
             </li>
-            <li class="nav-item right">
-                <a class="nav-link" (click)="logout()">Wyloguj się</a>
-            </li>
             <li class="nav-item dropdown d-sm-block d-md-none">
                 <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Menu
@@ -31,6 +28,13 @@
                 </div>
             </li>
         </ul>
+
+        <div class="dropdown">
+            Zalogowany jako: {{authService.decodedToken.unique_name}}
+            <a class="dropdown-roggle text-light" (click)="logout()"> (Wyloguj się)</a>
+        </div>
+            
+
     </div>
         
 </nav>
