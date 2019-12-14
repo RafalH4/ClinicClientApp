@@ -56,6 +56,8 @@ console.log("daty:");
   }
   addAppointments() {
     this.newAppointments.value.dates=this.dates;
+    console.log(this.newAppointments.value)
+    console.log("teraz ja");
     this.http.addAppointments(this.newAppointments.value).subscribe(
       ()=>console.log("success"),
       (error) => console.log(error)

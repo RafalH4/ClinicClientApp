@@ -25,7 +25,8 @@ export class AllAppointmentsComponent implements OnInit {
   appointmentSearchForm: FormGroup;
 
 
-  constructor(private http: AppointmentService,
+  constructor(
+    private http: AppointmentService,
     private httpDepartment: DepartmentsService,
     private httpDoctor: DoctorsService,
     private httpPatient: PatientsService,

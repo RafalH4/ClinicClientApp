@@ -39,6 +39,7 @@ import { ContractDetailComponent } from './content/contracts/contract-detail/con
 import { AddAppointmentComponent } from './content/appointments/add-appointment/add-appointment.component';
 import { AllAppointmentsComponent } from './content/appointments/all-appointments/all-appointments.component';
 import { AddPatientToAppointmentComponent } from './content/appointments/add-patient-to-appointment/add-patient-to-appointment.component';
+import { PatientViewComponent } from './content/patient-view/patient-view.component';
 
 
 
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
     {path: 'add', component: AddContractComponent},
     {path: ':id', component: ContractDetailComponent},
   ] },
+  {path: 'patientSite', component: PatientViewComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -113,7 +115,8 @@ const appRoutes: Routes = [
     ContractDetailComponent,
     AddAppointmentComponent,
     AllAppointmentsComponent,
-    AddPatientToAppointmentComponent
+    AddPatientToAppointmentComponent,
+    PatientViewComponent
   ],
   imports: [
     BrowserModule,

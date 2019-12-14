@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Zaplanowane wizyty
+            </div>
+            <ul class="list-group list-group-flush overflow-auto">
+                <li class="list-group-item">Data, godzina, imię nazwisko lekarza, gabinet</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+
+            <div class="card-header">
+                <form [formGroup]="appointmentSearchForm" (ngSubmit)="getAppointments()">
+                <div class="row">
+                    <div class="col-sm-2">
+                        Zapisz na wizytę
+                    </div>
+                    
+                        <div class="form-group col-sm-4">
+                            <select class="form-control" formControlName="departmentName">
+                                <option value="">Wybierz oddział</option>
+                                <option *ngFor="let department of departments" value="{{department.name}}">
+                                    {{department.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <select class="form-control" formControlName="doctorId">
+                                <option value="">Wybierz lekarza</option>
+                                <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.firstName}}
+                                    {{doctor.secondName}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <button>Pokaż</button>
+                        </div>
+                    
+
+                </div>
+            </form>
+            </div>
+            <div class="table-responsive-md overflow-auto">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">
+                                <button class="btn btn-primary">Wstecz</button>
+                            </th>
+                            <th scope="col">Pon</th>
+                            <th scope="col">Wt</th>
+                            <th scope="col">Śr</th>
+                            <th scope="col">Czw</th>
+                            <th scope="col">Pt</th>
+                            <th scope="col">Sob</th>
+                            <th scope="col">
+                                <button class="btn btn-primary" (click)="teraz()">Dalej</button>
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-2"></td>
+                            <td>
+                                <button class="btn btn-primary mt-2 col-12" 
+                                    *ngFor="let appointment of mondays">
+                                    {{appointment.date | date:'hh:mm'}}
+                                </button>
+                            </td>
+                            <td class="col-2">
+                                <button class="btn btn-primary mt-2" 
+                                    *ngFor="let appointment of tuesdays">
+                                    {{appointment.date | date:'hh:mm'}}
+                                </button>
+                            </td>                            
+                            <td class="col-2">
+                                <button class="btn btn-primary mt-2" 
+                                    *ngFor="let appointment of wednesdays">
+                                    {{appointment.date | date:'hh:mm'}}
+                                </button>
+                            </td>                            
+                            <td class="col-2">
+                                <button class="btn btn-primary mt-2" 
+                                    *ngFor="let appointment of thrusdays">
+                                    {{appointment.date | date:'hh:mm'}}
+                                </button>
+                            </td>                            
+                            <td class="col-2">
+                                <button class="btn btn-primary mt-2" 
+                                    *ngFor="let appointment of fridays">
+                                    {{appointment.date | date:'hh:mm'}}
+                                </button>
+                            </td>
+                            <td class="col-2">
+                                <button class="btn btn-primary mt-2" 
+                                    *ngFor="let appointment of saturdays">
+                                    {{appointment.date | date:'hh:mm'}}
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
