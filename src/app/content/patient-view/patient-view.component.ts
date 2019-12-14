@@ -90,4 +90,21 @@ export class PatientViewComponent implements OnInit {
         this.saturdays=data;
       })
   }
+
+  checkAppointment(date: Date, patient)
+  {
+    var dateToCheck=new Date(date);
+    var a: Date = new Date;
+    
+    if(dateToCheck.getTime() < a.getTime() || patient != null)
+    {
+      console.log("działam")
+      console.log(date);
+      console.log(patient);
+      return false
+    }
+      
+    else 
+      return true
+  }
 }

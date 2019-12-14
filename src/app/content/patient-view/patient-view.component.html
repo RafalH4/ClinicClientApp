@@ -76,41 +76,107 @@
                     <tbody>
                         <tr>
                             <td class="col-2"></td>
-                            <td>
-                                <button class="btn btn-primary mt-2 col-12" 
-                                    *ngFor="let appointment of mondays">
-                                    {{appointment.date | date:'hh:mm'}}
-                                </button>
+                            <td class="col-2">
+                                <div *ngFor="let appointment of mondays">
+                                    <div *ngIf="checkAppointment(appointment.date, appointment.Patient); else other" > 
+                                        <button 
+                                        class="btn btn-primary mt-2 col-12">
+                                            {{appointment.date | date:'HH:mm'}}
+                                        </button>
+                                    </div>
+                                    <ng-template #other>
+                                        <button 
+                                        class="btn btn-primary mt-2 col-12"
+                                        disabled>
+                                            {{appointment.date | date:'HH:mm'}}
+                                        </button>
+                                    </ng-template>
+                                </div>
                             </td>
                             <td class="col-2">
-                                <button class="btn btn-primary mt-2" 
-                                    *ngFor="let appointment of tuesdays">
-                                    {{appointment.date | date:'hh:mm'}}
-                                </button>
+                                <div *ngFor="let appointment of tuesdays">
+                                    <div *ngIf="checkAppointment(appointment.date, appointment.Patient); else other">
+                                        <button 
+                                        class="btn btn-primary mt-2 col-12">
+                                            {{appointment.date | date:'HH:mm'}}
+                                        </button>
+                                    </div>
+                                    <ng-template #other>
+                                        <button 
+                                        class="btn btn-primary mt-2 col-12"
+                                        disabled>
+                                            {{appointment.date | date:'HH:mm'}}
+                                        </button>
+                                    </ng-template>
+                                    </div>
                             </td>                            
                             <td class="col-2">
-                                <button class="btn btn-primary mt-2" 
-                                    *ngFor="let appointment of wednesdays">
-                                    {{appointment.date | date:'hh:mm'}}
-                                </button>
+                                    <div *ngFor="let appointment of wednesdays">
+                                        <div *ngIf="checkAppointment(appointment.date, appointment.Patient); else other">
+                                            <button 
+                                            class="btn btn-primary mt-2 col-12">
+                                                {{appointment.date | date:'HH:mm'}}
+                                            </button>
+                                        </div>
+                                            <ng-template #other>
+                                                <button
+                                                class="btn btn-primary mt-2 col-12"
+                                                disabled>
+                                                    {{appointment.date | date:'HH:mm'}}
+                                                </button>
+                                            </ng-template>
+                                            </div>
                             </td>                            
                             <td class="col-2">
-                                <button class="btn btn-primary mt-2" 
-                                    *ngFor="let appointment of thrusdays">
-                                    {{appointment.date | date:'hh:mm'}}
-                                </button>
+                                    <div *ngFor="let appointment of thrusdays">
+                                        <div *ngIf="checkAppointment(appointment.date, appointment.Patient); else other" >
+                                            <button 
+                                            class="btn btn-primary mt-2 col-12">
+                                                {{appointment.date | date:'HH:mm'}}
+                                            </button>
+                                        </div>
+                                            <ng-template #other>
+                                                <button 
+                                                class="btn btn-primary mt-2 col-12"
+                                                disabled>
+                                                    {{appointment.date | date:'HH:mm'}}
+                                                </button>
+                                            </ng-template>
+                                        </div>
                             </td>                            
                             <td class="col-2">
-                                <button class="btn btn-primary mt-2" 
-                                    *ngFor="let appointment of fridays">
-                                    {{appointment.date | date:'hh:mm'}}
-                                </button>
+                                    <div *ngFor="let appointment of fridays">
+                                        <div *ngIf="checkAppointment(appointment.date, appointment.Patient); else other" >
+                                            <button 
+                                            class="btn btn-primary mt-2 col-12">
+                                                {{appointment.date | date:'HH:mm'}}
+                                            </button>
+                                        </div>
+                                            <ng-template #other>
+                                                <button 
+                                                class="btn btn-primary mt-2 col-12"
+                                                disabled>
+                                                    {{appointment.date | date:'HH:mm'}}
+                                                </button>
+                                            </ng-template>
+                                        </div>
                             </td>
                             <td class="col-2">
-                                <button class="btn btn-primary mt-2" 
-                                    *ngFor="let appointment of saturdays">
-                                    {{appointment.date | date:'hh:mm'}}
-                                </button>
+                                    <div *ngFor="let appointment of saturdays">
+                                        <div *ngIf="checkAppointment(appointment.date, appointment.Patient); else other" >
+                                            <button 
+                                            class="btn btn-primary mt-2 col-12">
+                                                {{appointment.date | date:'HH:mm'}}
+                                            </button>
+                                        </div>
+                                            <ng-template #other>
+                                                <button #other
+                                                class="btn btn-primary mt-2 col-12"
+                                                disabled>
+                                                    {{appointment.date | date:'HH:mm'}}
+                                                </button>
+                                            </ng-template>
+                                        </div>
                             </td>
                         </tr>
                     </tbody>
