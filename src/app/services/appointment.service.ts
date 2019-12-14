@@ -27,6 +27,9 @@ export class AppointmentService {
   addUserToAppointment(model: any)
   {
     return this.http.post(this.baseUrl+"addUser", model);
+  }
 
+  getFreeAppointments(params: any){
+    return this.http.get(this.baseUrl+"free"+params);
   }
 }

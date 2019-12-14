@@ -40,6 +40,7 @@ import { AddAppointmentComponent } from './content/appointments/add-appointment/
 import { AllAppointmentsComponent } from './content/appointments/all-appointments/all-appointments.component';
 import { AddPatientToAppointmentComponent } from './content/appointments/add-patient-to-appointment/add-patient-to-appointment.component';
 import { PatientViewComponent } from './content/patient-view/patient-view.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 
@@ -48,7 +49,8 @@ import { PatientViewComponent } from './content/patient-view/patient-view.compon
 const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'appointments', component: AppointmentsComponent, children : [
+  { path: 'appointments', component: AppointmentsComponent, canActivate:[AuthGuard], 
+    data: {expectedRole: 'root', expectedRole2:'doctor'} ,children : [
     {path: '', component: AllAppointmentsComponent},
     {path: 'add', component: AddAppointmentComponent},
     {path: 'addPatient/:id', component: AddPatientToAppointmentComponent},

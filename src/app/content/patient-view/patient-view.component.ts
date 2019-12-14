@@ -20,10 +20,11 @@ export class PatientViewComponent implements OnInit {
   fridays: any[];
   saturdays : any[];
 
+  numberOfWeek : number = 0;
+
   stringParams: string;
   startDate = new Date();
   endDate = new Date();
-  actualDate =  new Date();
   appointmentSearchForm: FormGroup;
   constructor(
     private httpDepartment: DepartmentsService,
@@ -47,19 +48,12 @@ export class PatientViewComponent implements OnInit {
     })
   }
 
-
   setParams(id: number) {
       var date = new Date();
       this.startDate.setDate(date.getDate()-date.getDay()+1+id);
-      this.endDate.setDate(date.getDate()-date.getDay()+1+id);
-
-      this.startDate.setHours(1,0,0);
-      this.endDate.setHours(0,59,59);
-
+      
       this.stringParams="?";
-      this.stringParams= this.stringParams+"&startdate="+ this.startDate.toISOString();
-      this.stringParams=this.stringParams+"&enddate="+this.endDate.toISOString();
-
+      this.stringParams= this.stringParams+"&date="+ this.startDate.toISOString();
     if(this.appointmentSearchForm.value.departmentName!="")
       this.stringParams=this.stringParams+"&departmentName="+this.appointmentSearchForm.value.departmentName;
     if(this.appointmentSearchForm.value.doctorId!="")
@@ -71,22 +65,22 @@ export class PatientViewComponent implements OnInit {
   }
 
   getAppointments(){  
-      this.httpAppointment.getAppointments(this.setParams(0)).subscribe((data: any[])=>{
+      this.httpAppointment.getFreeAppointments(this.setParams(0)).subscribe((data: any[])=>{
         this.mondays=data;
       })
-      this.httpAppointment.getAppointments(this.setParams(1)).subscribe((data: any[])=>{
+      this.httpAppointment.getFreeAppointments(this.setParams(1)).subscribe((data: any[])=>{
         this.tuesdays=data;
       })
-      this.httpAppointment.getAppointments(this.setParams(2)).subscribe((data: any[])=>{
+      this.httpAppointment.getFreeAppointments(this.setParams(2)).subscribe((data: any[])=>{
         this.wednesdays=data;
       })
-      this.httpAppointment.getAppointments(this.setParams(3)).subscribe((data: any[])=>{
+      this.httpAppointment.getFreeAppointments(this.setParams(3)).subscribe((data: any[])=>{
         this.thrusdays=data;
       })
-      this.httpAppointment.getAppointments(this.setParams(4)).subscribe((data: any[])=>{
+      this.httpAppointment.getFreeAppointments(this.setParams(4)).subscribe((data: any[])=>{
         this.fridays=data;
       })
-      this.httpAppointment.getAppointments(this.setParams(5)).subscribe((data: any[])=>{
+      this.httpAppointment.getFreeAppointments(this.setParams(5)).subscribe((data: any[])=>{
         this.saturdays=data;
       })
   }
@@ -103,7 +97,6 @@ export class PatientViewComponent implements OnInit {
       console.log(patient);
       return false
     }
-      
     else 
       return true
   }
