@@ -32,7 +32,7 @@
                     
                         <div class="form-group col-sm-4">
                             <select class="form-control" formControlName="departmentName">
-                                <option value="">Wybierz oddział</option>
+                                <option value="">Oddział</option>
                                 <option *ngFor="let department of departments" value="{{department.name}}">
                                     {{department.name}}</option>
                             </select>
@@ -40,7 +40,7 @@
 
                         <div class="form-group col-sm-4">
                             <select class="form-control" formControlName="doctorId">
-                                <option value="">Wybierz lekarza</option>
+                                <option value="">Lekarz</option>
                                 <option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.firstName}}
                                     {{doctor.secondName}}
                                 </option>
@@ -79,7 +79,8 @@
                             <td class="col-2">
                                 <div *ngFor="let appointment of mondays">
                                         <button 
-                                        class="btn btn-primary mt-2 col-12">
+                                        class="btn btn-primary mt-2 col-12"
+                                        (click)=addMeToAppointment(appointment.id)>
                                             {{appointment.date | date:'HH:mm'}}
                                         </button>
                                 </div>

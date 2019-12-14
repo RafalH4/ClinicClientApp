@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { AuthGuard } from './guard/auth.guard';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -40,7 +42,11 @@ import { AddAppointmentComponent } from './content/appointments/add-appointment/
 import { AllAppointmentsComponent } from './content/appointments/all-appointments/all-appointments.component';
 import { AddPatientToAppointmentComponent } from './content/appointments/add-patient-to-appointment/add-patient-to-appointment.component';
 import { PatientViewComponent } from './content/patient-view/patient-view.component';
-import { AuthGuard } from './guard/auth.guard';
+
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 
 
@@ -128,6 +134,13 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     MDBBootstrapModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:5001'],
+        blacklistedRoutes: ['localhost:5001/auth']
+      }
+    })
 
   ],
   providers: [

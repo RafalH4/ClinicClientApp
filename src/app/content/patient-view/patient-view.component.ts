@@ -43,8 +43,8 @@ export class PatientViewComponent implements OnInit {
     })
 
     this.appointmentSearchForm = this.formBuilder.group({
-      departmentName: ["Wybierz oddział",],
-      doctorId: ['Wybierz lekarza',],
+      departmentName: ['Oddział',],
+      doctorId: ['Lekarz',],
     })
   }
 
@@ -67,6 +67,7 @@ export class PatientViewComponent implements OnInit {
   getAppointments(){  
       this.httpAppointment.getFreeAppointments(this.setParams(0)).subscribe((data: any[])=>{
         this.mondays=data;
+        console.log(this.mondays);
       })
       this.httpAppointment.getFreeAppointments(this.setParams(1)).subscribe((data: any[])=>{
         this.tuesdays=data;
@@ -99,5 +100,14 @@ export class PatientViewComponent implements OnInit {
     }
     else 
       return true
+  }
+
+  addMeToAppointment(id)
+  {
+    console.log(id);
+    this.httpAppointment.addMeToAppointment(id).subscribe(
+      ()=>console.log("success"),
+      (error)=>console.log(error)
+    )
   }
 }

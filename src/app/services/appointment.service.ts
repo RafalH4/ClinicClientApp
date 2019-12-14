@@ -32,4 +32,8 @@ export class AppointmentService {
   getFreeAppointments(params: any){
     return this.http.get(this.baseUrl+"free"+params);
   }
+
+  addMeToAppointment(id : any){
+    return this.http.get(this.baseUrl+"addMe/"+id)
+  }
 }
