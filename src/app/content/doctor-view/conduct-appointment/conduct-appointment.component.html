@@ -1,0 +1,55 @@
+<div class="row">
+<h2 class="col-sm-10">Wizyta</h2>
+<div class="col-sm-2">
+    <button class="btn btn-danger" routerLink="/doctorSite">Zakończ wizytę</button>
+</div>
+</div>
+
+<h3>Dane osobowe pacjenta</h3>
+<div class="row">
+    <div class="col-md-4">
+        Imię: {{appointment.patient?.firstName}}<br>
+        Nazwisko: {{appointment.patient?.secondName}}<br>
+        Pesel:{{appointment.patient?.pesel}}<br>
+    </div>
+    <div class="col-md-4">
+        Email: {{appointment.patient?.email}}<br>
+        Numer telefonu: {{appointment.patient?.phoneNumber}}<br>
+    </div>
+    <div class="col-md-4">
+        Miejscowość: {{appointment.patient?.postCode}} {{appointment.patient?.city}}<br>
+        Adres: {{appointment.patient?.street}} {{appointment.patient?.houseNumber}}<br>
+        
+ 
+    </div>
+</div>
+
+<h3>Dokumentacja wizyty</h3>
+
+<div class="form-group">
+    <label>Wywiad lekarski</label>
+    <textarea class="form-control" rows="5"></textarea>
+  </div>
+<div class="row">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Wystawianie recepty
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          Wystawianie skierowania
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+      </div>
+
+</div>

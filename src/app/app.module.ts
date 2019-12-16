@@ -44,7 +44,9 @@ import { AddPatientToAppointmentComponent } from './content/appointments/add-pat
 import { PatientViewComponent } from './content/patient-view/patient-view.component';
 import { NurseViewComponent } from './content/nurse-view/nurse-view.component';
 import { DoctorViewComponent } from './content/doctor-view/doctor-view.component';
-import { ConductAppointmentComponent } from './content/doctorView/conduct-appointment/conduct-appointment.component';
+import { ConductAppointmentComponent } from './content/doctor-view/conduct-appointment/conduct-appointment.component';
+import { AllAppointmentComponent } from './content/doctor-view/all-appointment/all-appointment.component';
+
 
 
 export function tokenGetter() {
@@ -97,7 +99,10 @@ const appRoutes: Routes = [
   {path: 'nurseSite', component: NurseViewComponent, canActivate:[AuthGuard], 
   data: {expectedRole: 'nurse'} },
   {path: 'doctorSite', component: DoctorViewComponent, canActivate:[AuthGuard], 
-  data: {expectedRole: 'doctor'} },
+  data: {expectedRole: 'doctor'}, children: [
+    {path: '', component: AllAppointmentComponent},
+    {path: ':id', component: ConductAppointmentComponent},
+  ]},
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -139,7 +144,8 @@ const appRoutes: Routes = [
     PatientViewComponent,
     NurseViewComponent,
     DoctorViewComponent,
-    ConductAppointmentComponent
+    ConductAppointmentComponent,
+    AllAppointmentComponent
   ],
   imports: [
     BrowserModule,

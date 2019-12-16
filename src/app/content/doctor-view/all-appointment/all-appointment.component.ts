@@ -3,11 +3,11 @@ import { AppointmentService } from 'src/app/services/appointment.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-doctor-view',
-  templateUrl: './doctor-view.component.html',
-  styleUrls: ['./doctor-view.component.css']
+  selector: 'app-all-appointment',
+  templateUrl: './all-appointment.component.html',
+  styleUrls: ['./all-appointment.component.css']
 })
-export class DoctorViewComponent implements OnInit {
+export class AllAppointmentComponent implements OnInit {
   appointments : any[];
 
   constructor(
@@ -24,5 +24,4 @@ export class DoctorViewComponent implements OnInit {
   openAppointment(id){
     this.router.navigateByUrl("doctorSite/"+id);
   }
-
 }

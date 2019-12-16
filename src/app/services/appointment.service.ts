@@ -9,6 +9,10 @@ export class AppointmentService {
   baseUrl = "https://localhost:5001/appointment/"
   constructor(private http: HttpClient) { }
 
+  getById(id) {
+    return this.http.get(this.baseUrl+"byId/"+id);
+  }
+
   addAppointments(model: any)
   {
     return this.http.post(this.baseUrl, model);
