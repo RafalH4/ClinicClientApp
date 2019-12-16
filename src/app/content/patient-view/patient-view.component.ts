@@ -19,6 +19,7 @@ export class PatientViewComponent implements OnInit {
   thrusdays: any[];
   fridays: any[];
   saturdays : any[];
+  myAppointments: any[];
 
   numberOfWeek : number = 0;
 
@@ -43,9 +44,10 @@ export class PatientViewComponent implements OnInit {
     })
 
     this.appointmentSearchForm = this.formBuilder.group({
-      departmentName: ['Oddział',],
-      doctorId: ['Lekarz',],
+      departmentName: ['',],
+      doctorId: ['',],
     })
+    this.getMyAppointments();
   }
 
   setParams(id: number) {
@@ -108,6 +110,15 @@ export class PatientViewComponent implements OnInit {
     this.httpAppointment.addMeToAppointment(id).subscribe(
       ()=>console.log("success"),
       (error)=>console.log(error)
+    )
+  }
+
+  getMyAppointments()
+  {
+    this.httpAppointment.getMyPatientAppointments().subscribe((data: any[])=>{
+        this.myAppointments=data;
+        console.log(this.myAppointments);
+      }
     )
   }
 }

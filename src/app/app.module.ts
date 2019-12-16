@@ -42,6 +42,9 @@ import { AddAppointmentComponent } from './content/appointments/add-appointment/
 import { AllAppointmentsComponent } from './content/appointments/all-appointments/all-appointments.component';
 import { AddPatientToAppointmentComponent } from './content/appointments/add-patient-to-appointment/add-patient-to-appointment.component';
 import { PatientViewComponent } from './content/patient-view/patient-view.component';
+import { NurseViewComponent } from './content/nurse-view/nurse-view.component';
+import { DoctorViewComponent } from './content/doctor-view/doctor-view.component';
+import { ConductAppointmentComponent } from './content/doctorView/conduct-appointment/conduct-appointment.component';
 
 
 export function tokenGetter() {
@@ -56,12 +59,13 @@ const appRoutes: Routes = [
   { path: '', component: StartPageComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'appointments', component: AppointmentsComponent, canActivate:[AuthGuard], 
-    data: {expectedRole: 'root', expectedRole2:'doctor'} ,children : [
+    data: {expectedRole: 'root', expectedRole2:'doctor', expectedRole3: 'nurse'} ,children : [
     {path: '', component: AllAppointmentsComponent},
     {path: 'add', component: AddAppointmentComponent},
     {path: 'addPatient/:id', component: AddPatientToAppointmentComponent},
   ]},
-  { path: 'users', component: UsersComponent , children : [
+  { path: 'users', component: UsersComponent , canActivate:[AuthGuard], 
+  data: {expectedRole: 'root'}, children : [
     {path: '', component: UsersListComponent, data :{type : 'all'}},
     {path: 'roots', component: UsersListComponent, data :{type : 'roots'}},
     {path: 'doctors', component: UsersListComponent, data :{type : 'doctors'}},
@@ -70,22 +74,30 @@ const appRoutes: Routes = [
     {path: 'add', component: AddUserComponent},
     {path: ':id', component: UserDetailsComponent}
   ]},
-  { path: 'departments', component: DepartmentsComponent, children : [
+  { path: 'departments', component: DepartmentsComponent, canActivate:[AuthGuard], 
+  data: {expectedRole: 'root'}, children : [
     {path: '', component: AllDepartmentsComponent},
     {path: 'add', component: AddDepartmentComponent},
     {path: ':id', component: DepartmentDetailComponent},
   ]},
-  { path: 'medOffices', component: MedOfficesComponent, children : [
+  { path: 'medOffices', component: MedOfficesComponent, canActivate:[AuthGuard], 
+  data: {expectedRole: 'root'}, children : [
     {path: '', component: AllOfficesComponent},
     {path: 'add', component: AddOfficeComponent},
     {path: ':id', component: OfficesDetailsComponent},
   ]},
-  { path: 'contracts', component: ContractsComponent, children: [
+  { path: 'contracts', component: ContractsComponent, canActivate:[AuthGuard], 
+  data: {expectedRole: 'root'}, children: [
     {path: '', component: AllContractsComponent},
     {path: 'add', component: AddContractComponent},
     {path: ':id', component: ContractDetailComponent},
   ] },
-  {path: 'patientSite', component: PatientViewComponent},
+  {path: 'patientSite', component: PatientViewComponent, canActivate:[AuthGuard], 
+  data: {expectedRole: 'patient'} },
+  {path: 'nurseSite', component: NurseViewComponent, canActivate:[AuthGuard], 
+  data: {expectedRole: 'nurse'} },
+  {path: 'doctorSite', component: DoctorViewComponent, canActivate:[AuthGuard], 
+  data: {expectedRole: 'doctor'} },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -124,7 +136,10 @@ const appRoutes: Routes = [
     AddAppointmentComponent,
     AllAppointmentsComponent,
     AddPatientToAppointmentComponent,
-    PatientViewComponent
+    PatientViewComponent,
+    NurseViewComponent,
+    DoctorViewComponent,
+    ConductAppointmentComponent
   ],
   imports: [
     BrowserModule,

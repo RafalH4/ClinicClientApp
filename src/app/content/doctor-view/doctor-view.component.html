@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">L.p.</th>
+        <th scope="col">Data</th>
+        <th scope="col">Godzina</th>
+        <th scope="col">Pacjent</th>
+        <th scope="col">Oddział</th>
+        <th scope="col">Operacje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let appointment of appointments; let z = index">
+        <td>{{z+1}}</td>
+        <td>{{appointment.date | date:'yyyy-MM-dd'}}</td>
+        <td>{{appointment.date | date:'hh-mm'}}</td>
+        <td>{{appointment.patient?.firstName}} {{appointment.patient?.secondName}}</td>
+        <td>{{appointment.departmentName}}</td>
+        <button type="button" class="btn btn-primary">Otwórz wizytę</button>
+
+      </tr>
+    </tbody>
+  </table>

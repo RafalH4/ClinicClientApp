@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { AuthGuard } from '../guard/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   submitted: boolean;
   registerMode: boolean;
   constructor(private formBuilder : FormBuilder,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private authGuard: AuthGuard) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
     }, error => {
       console.log('Failed to login');
     });
+
   }
 
   changeMode(){

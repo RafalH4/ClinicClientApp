@@ -2,21 +2,23 @@
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
-                Zaplanowane wizyty
+                Moje wizyty
             </div>
             <ul class="list-group list-group-flush overflow-auto">
-                <li class="list-group-item">Data, godzina, imię nazwisko lekarza, gabinet</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li *ngFor="let appointment of myAppointments" class="list-group-item" >
+                    <div class="row">
+                        <div class="col-sm-8">
+                            Data: <b>{{appointment.date | date:'yyyy-MM-dd'}}</b>><br>
+                            Godzina: <b>{{appointment.date | date:'HH:mm'}}</b><br>
+                            Lekarz: <b>{{appointment.doctor?.firstName}} {{appointment.doctor?.secondName}}</b><br>
+                            Gabinet: <b>{{appointment.medOffice?.officeNumber}}</b>
+                        </div>
+                        <div class="col-sm-4">
+                            <button class="col-12 btn btn-danger">Usuń</button>
+                        </div>
+                    </div>
+
+                </li>
             </ul>
         </div>
     </div>
@@ -130,5 +132,55 @@
                 </table>
             </div>
         </div>
+
+
+        
     </div>
+    
 </div>
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Moje recepty
+            </div>
+            <ul class="list-group list-group-flush overflow-auto">
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Moje skierowania
+            </div>
+            <ul class="list-group list-group-flush overflow-auto">
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+                <li class="list-group-item" >
+                    Skierowanie nr 1
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>
+
