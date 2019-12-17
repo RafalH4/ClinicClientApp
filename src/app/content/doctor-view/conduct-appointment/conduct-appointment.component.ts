@@ -14,10 +14,12 @@ export class ConductAppointmentComponent implements OnInit {
   appointment : any = {}
   drug: string;
   drugComments: string;
+  prescriptions: any[];
 
   treatment: string;
   treatmentComments: string;
-  prescriptions: any[];
+  referrals: any[];
+  
   constructor(
     private httpReferral: ReferralService,
     private httpPrescription: PrescriptionService,
@@ -38,6 +40,11 @@ export class ConductAppointmentComponent implements OnInit {
     this.httpPrescription.getByAppointmentId(this.param).subscribe((data: any[])=>{
       this.prescriptions = data;
       console.log(this.prescriptions);
+    })
+
+    this.httpReferral.getByAppointmentId(this.param).subscribe((data: any[])=>{
+      this.referrals = data;
+      console.log(this.referrals);
     })
   }
 
