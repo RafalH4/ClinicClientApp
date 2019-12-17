@@ -1,0 +1,31 @@
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Moje recepty
+            </div>
+            <ul class="list-group list-group-flush overflow-auto">
+                <li class="list-group-item" *ngFor="let prescription of prescriptions">
+                    Recepta na na <b>{{prescription.drugName}}</b><br>
+                    wystawione dnia <b>{{prescription.createdAt | date:'yyyy-MM-dd'}}</b><br>
+                    przez lekarza <b>{{prescription.appointment?.doctor?.firstName}} {{prescription.appointment?.doctor?.secondName}}</b><br>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Moje skierowania
+            </div>
+            <ul class="list-group list-group-flush overflow-auto">
+                <li class="list-group-item" *ngFor="let referral of referrals">
+                    Skierowanie na <b>{{referral.treatment}}</b><br>
+                    wystawione dnia <b>{{referral.createdAt | date:'yyyy-MM-dd'}}</b><br>
+                    przez lekarza <b>{{referral.appointment?.doctor?.firstName}} {{referral.appointment?.doctor?.secondName}}</b><br>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+</div>

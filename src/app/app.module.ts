@@ -48,6 +48,7 @@ import { ConductAppointmentComponent } from './content/doctor-view/conduct-appoi
 import { AllAppointmentComponent } from './content/doctor-view/all-appointment/all-appointment.component';
 import { MakeAppointmentComponent } from './content/patient-view/make-appointment/make-appointment.component';
 import { MyAppointmentsComponent } from './content/patient-view/my-appointments/my-appointments.component';
+import { MyDocumentsComponent } from './content/patient-view/my-documents/my-documents.component';
 
 
 
@@ -60,7 +61,7 @@ export function tokenGetter() {
 
 
 const appRoutes: Routes = [
-  { path: '', component: StartPageComponent },
+  { path: '', component: StartPageComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'appointments', component: AppointmentsComponent, canActivate:[AuthGuard], 
     data: {expectedRole: 'root', expectedRole2:'doctor', expectedRole3: 'nurse'} ,children : [
@@ -105,6 +106,7 @@ const appRoutes: Routes = [
     {path: '', component: AllAppointmentComponent},
     {path: ':id', component: ConductAppointmentComponent},
   ]},
+  { path: 'login', component: LoginComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -149,7 +151,8 @@ const appRoutes: Routes = [
     ConductAppointmentComponent,
     AllAppointmentComponent,
     MakeAppointmentComponent,
-    MyAppointmentsComponent
+    MyAppointmentsComponent,
+    MyDocumentsComponent
   ],
   imports: [
     BrowserModule,

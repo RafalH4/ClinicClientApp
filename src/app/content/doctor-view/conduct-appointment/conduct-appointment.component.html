@@ -1,7 +1,7 @@
 <div class="row">
 <h2 class="col-sm-10">Wizyta</h2>
 <div class="col-sm-2">
-    <button class="btn btn-danger" routerLink="/doctorSite">Zakończ wizytę</button>
+    <button class="btn btn-danger" (click)="endAppointment()">Zakończ wizytę</button>
 </div>
 </div>
 
@@ -28,7 +28,7 @@
 
 <div class="form-group">
     <label>Wywiad lekarski</label>
-    <textarea class="form-control" rows="5"></textarea>
+    <textarea class="form-control" rows="5" [(ngModel)]="anamnesis"></textarea>
 </div>
 <div class="row">
     <div class="col-md-6">

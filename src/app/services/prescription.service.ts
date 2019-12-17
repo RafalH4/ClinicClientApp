@@ -18,4 +18,7 @@ export class PrescriptionService {
   {
     return this.http.get(this.baseUrl+appointmentId);
   }
+  getMyPatientPrescription(){
+    return this.http.get(this.baseUrl+"myPrescriptions");
+  }
 }

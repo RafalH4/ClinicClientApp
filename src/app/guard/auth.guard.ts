@@ -26,11 +26,28 @@ export class AuthGuard implements CanActivate  {
 
     if(this.authService.loggedIn())
     {
+      // if(expectedRole=="startPage")
+      // {
+      //   if(tokenPayload.role=='root')
+      //     this.router.navigate(['']);
+      //   if(tokenPayload.role=='doctor')
+      //     this.router.navigate(['doctorSite']);
+      //   if(tokenPayload.role=='nurse')
+      //     this.router.navigate(['nurseSite']);
+      //   if(tokenPayload.role=='patient')
+      //     this.router.navigate(['patientSite']);
+      // }
+
       if(tokenPayload.role == expectedRole || tokenPayload.role == expectedRole2 || 
         tokenPayload.role == expectedRole3 || tokenPayload.role == expectedRole4)
         return true
+      else{
+        this.router.navigate(['']);
+        return false
+      }
+        
     }
-    
+    this.router.navigate(['']);
     return false
   }
    

@@ -19,12 +19,17 @@ export class ConductAppointmentComponent implements OnInit {
   treatment: string;
   treatmentComments: string;
   referrals: any[];
+
+  anamnesis: string;
+  anamnesisObj: any = {};
+
   
   constructor(
     private httpReferral: ReferralService,
     private httpPrescription: PrescriptionService,
     private httpAppointment : AppointmentService,     
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     console.log("działam")
@@ -34,6 +39,7 @@ export class ConductAppointmentComponent implements OnInit {
     })
     this.httpAppointment.getById(this.param).subscribe(data =>{
       this.appointment = data;
+      this.anamnesis=this.appointment.anamnesis;
       console.log(this.appointment);
     })
 
@@ -50,7 +56,6 @@ export class ConductAppointmentComponent implements OnInit {
 
   savePrescription()
   {
-
     console.log(this.drug);
     console.log(this.drugComments);
     var prescription = {
@@ -75,6 +80,21 @@ export class ConductAppointmentComponent implements OnInit {
       ()=>this.ngOnInit(),
       (error)=> console.log(error)
     );
+  }
+
+  endAppointment()
+  {
+    this.anamnesisObj.id=this.param;
+    this.anamnesisObj.anamnesis = this.anamnesis;
+
+    this.httpAppointment.addAnamnesis(this.anamnesisObj).subscribe(
+      ()=>{
+        console.log("success");
+        this.router.navigateByUrl('/doctorSite');
+      },
+      (error)=>console.log(error)
+    )
+
   }
 
 }

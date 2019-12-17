@@ -54,7 +54,12 @@ export class MyAppointmentsComponent implements OnInit {
   {
     console.log(id);
     this.httpAppointment.deletePatientFromApointment(id).subscribe(data =>
-      console.log("Udało się"))
+      {
+        console.log("success")
+        this.ngOnInit()
+      }
+      
+      )
     
   }
 }

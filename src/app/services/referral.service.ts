@@ -18,4 +18,8 @@ export class ReferralService {
   {
     return this.http.get(this.baseUrl+appointmentId);
   }
+  
+  getMyPatientReferrals(){
+    return this.http.get(this.baseUrl+"myReferrals");
+  }
 }

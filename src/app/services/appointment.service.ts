@@ -52,4 +52,8 @@ export class AppointmentService {
   deletePatientFromApointment(id) {
     return this.http.get(this.baseUrl+id)
   }
+  addAnamnesis(anamnesis: any)
+  {
+    return this.http.put(this.baseUrl+"anamnesis/", anamnesis);
+  }
 }

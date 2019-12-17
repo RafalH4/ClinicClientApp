@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import decode from 'jwt-decode';
 
 @Component({
   selector: 'app-left-nav',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftNavComponent implements OnInit {
 
+  role: string;
   constructor() { }
 
   ngOnInit() {
+    const token = localStorage.getItem('token');
+    const tokenPayload = decode(token);
+    this.role=tokenPayload.role;
   }
 
 }

@@ -1,16 +1,12 @@
+
 <app-top-nav></app-top-nav> 
+
 <div class="row" id="body-row">
-    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
+
+    <div *ngIf="role=='root'" id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
         <app-left-nav></app-left-nav>
     </div>
     <div class="col spacing">
         <router-outlet></router-outlet>
     </div>
 </div>
-
-   
-
-
-        
-
-    

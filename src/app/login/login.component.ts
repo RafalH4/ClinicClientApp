@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { AuthGuard } from '../guard/auth.guard';
+import decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +15,18 @@ export class LoginComponent implements OnInit {
   loginForm : FormGroup;
   submitted: boolean;
   registerMode: boolean;
+  role: string;
   constructor(private formBuilder : FormBuilder,
               private authService: AuthService,
-              private authGuard: AuthGuard) { }
+              private router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email : ['', Validators.required],
       password: ['',Validators.required]
     });
+
+
   }
 
   login() {
@@ -31,7 +36,7 @@ export class LoginComponent implements OnInit {
     }
 
    this.authService.login(this.loginForm.value).subscribe(next =>{
-      console.log('Logged ');
+      console.log('Logged ');      
     }, error => {
       console.log('Failed to login');
     });
