@@ -13,4 +13,9 @@ export class PrescriptionService {
   {
     return this.http.post(this.baseUrl+id, prescription);
   }
+
+  getByAppointmentId(appointmentId)
+  {
+    return this.http.get(this.baseUrl+appointmentId);
+  }
 }

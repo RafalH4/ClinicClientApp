@@ -44,9 +44,10 @@
                 </div>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Recepta nr 1</li>
-              <li class="list-group-item">Recepta nr 2</li>
-              <li class="list-group-item">Recepta nr 3</li>
+              <li class="list-group-item" *ngFor="let prescription of prescriptions">
+                  {{prescription.drugName}}
+              </li>
+
             </ul>
           </div>
     </div>

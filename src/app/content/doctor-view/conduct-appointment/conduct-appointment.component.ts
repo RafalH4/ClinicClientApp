@@ -13,6 +13,7 @@ export class ConductAppointmentComponent implements OnInit {
   appointment : any = {}
   drug: string;
   drugComments: string;
+  prescriptions: any[];
   constructor(
     private httpPrescription: PrescriptionService,
     private httpAppointment : AppointmentService,     
@@ -28,6 +29,11 @@ export class ConductAppointmentComponent implements OnInit {
       this.appointment = data;
       console.log(this.appointment);
     })
+
+    this.httpPrescription.getByAppointmentId(this.param).subscribe((data: any[])=>{
+      this.prescriptions = data;
+      console.log(this.prescriptions);
+    })
   }
 
   savePrescription()
@@ -40,7 +46,7 @@ export class ConductAppointmentComponent implements OnInit {
     }
     console.log(prescription);
     this.httpPrescription.addPrescription(prescription, this.param).subscribe(
-      ()=>console.log("success"),
+      ()=>this.ngOnInit(),
       (error)=> console.log(error)
     );
 
