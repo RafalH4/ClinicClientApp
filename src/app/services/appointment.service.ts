@@ -48,4 +48,8 @@ export class AppointmentService {
   getMyDoctorAppointments() {
     return this.http.get(this.baseUrl+"getDoctorAppointments")
   }
+
+  deletePatientFromApointment(id) {
+    return this.http.get(this.baseUrl+id)
+  }
 }

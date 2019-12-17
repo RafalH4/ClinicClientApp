@@ -1,0 +1,22 @@
+
+    <div class="card">
+        <div class="card-header">
+            Moje wizyty
+        </div>
+        <ul class="list-group list-group-flush overflow-auto">
+            <li *ngFor="let appointment of myAppointments" class="list-group-item" >
+                <div class="row">
+                    <div class="col-sm-8">
+                        Data: <b>{{appointment.date | date:'yyyy-MM-dd'}}</b>><br>
+                        Godzina: <b>{{appointment.date | date:'HH:mm'}}</b><br>
+                        Lekarz: <b>{{appointment.doctor?.firstName}} {{appointment.doctor?.secondName}}</b><br>
+                        Gabinet: <b>{{appointment.medOffice?.officeNumber}}</b>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="col-12 btn btn-danger" (click)="delete(appointment.id)">Usuń</button>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>

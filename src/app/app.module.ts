@@ -46,6 +46,8 @@ import { NurseViewComponent } from './content/nurse-view/nurse-view.component';
 import { DoctorViewComponent } from './content/doctor-view/doctor-view.component';
 import { ConductAppointmentComponent } from './content/doctor-view/conduct-appointment/conduct-appointment.component';
 import { AllAppointmentComponent } from './content/doctor-view/all-appointment/all-appointment.component';
+import { MakeAppointmentComponent } from './content/patient-view/make-appointment/make-appointment.component';
+import { MyAppointmentsComponent } from './content/patient-view/my-appointments/my-appointments.component';
 
 
 
@@ -145,7 +147,9 @@ const appRoutes: Routes = [
     NurseViewComponent,
     DoctorViewComponent,
     ConductAppointmentComponent,
-    AllAppointmentComponent
+    AllAppointmentComponent,
+    MakeAppointmentComponent,
+    MyAppointmentsComponent
   ],
   imports: [
     BrowserModule,

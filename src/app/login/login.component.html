@@ -1,4 +1,4 @@
-<div *ngIf="!registerMode" class="text-center main">
+<div *ngIf="true" class="text-center main">
         <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()">
                 <img src="assets/img/logo.png">
                 <div class="login-form">
@@ -27,11 +27,33 @@
                     <div class="checkbox mb-3"></div>
 
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
-                    Nie masz konta? <a (click)="changeMode()">Zarejestruj się </a> 
+                    Nie masz konta? <a (click)="changeMode()" data-toggle="modal" data-target="#przykladowyModal1" >Zarejestruj się </a> 
                 </div>
         </form>
+        <div class="modal" id="przykladowyModal1" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Rejestracja</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <app-register></app-register>
+                      </div>
+                  </div>
+                </div>
+              </div>
 </div>
-<div *ngIf="registerMode">
-        <app-register></app-register>
+<div *ngIf="false">
+
+              <!-- END Przycisk uruchamiający modal -->
+               
+                
+
+
+
+        
 </div>
 
