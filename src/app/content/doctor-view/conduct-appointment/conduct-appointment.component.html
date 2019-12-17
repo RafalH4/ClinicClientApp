@@ -61,7 +61,9 @@
                         Wystawianie skierowania
                     </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary float-right">Dodaj</button>
+                        <div class="col-sm-4">
+                            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#referralModel">Dodaj</button>
+                        </div>
                     </div>
                 </div>
               
@@ -87,6 +89,21 @@
          </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="savePrescription()">Zapisz</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal" id="referralModel" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+            Nazwa leczenia: <input type="text" class="form-control" [(ngModel)]="treatment"><br>
+            Zalecenia: <input type="text" class="form-control" [(ngModel)]="treatmentComments"><br>
+         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="saveReferral()">Zapisz</button>
         </div>
       </div>
     </div>

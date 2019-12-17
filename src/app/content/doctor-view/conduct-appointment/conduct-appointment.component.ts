@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PrescriptionService } from 'src/app/services/prescription.service';
+import { ReferralService } from 'src/app/services/referral.service';
 
 @Component({
   selector: 'app-conduct-appointment',
@@ -13,8 +14,12 @@ export class ConductAppointmentComponent implements OnInit {
   appointment : any = {}
   drug: string;
   drugComments: string;
+
+  treatment: string;
+  treatmentComments: string;
   prescriptions: any[];
   constructor(
+    private httpReferral: ReferralService,
     private httpPrescription: PrescriptionService,
     private httpAppointment : AppointmentService,     
     private route: ActivatedRoute) { }
@@ -49,7 +54,20 @@ export class ConductAppointmentComponent implements OnInit {
       ()=>this.ngOnInit(),
       (error)=> console.log(error)
     );
+  }
 
+  saveReferral()
+  {
+    console.log(this.treatment);
+    console.log(this.treatmentComments);
+    var referral = {
+      treatment: this.treatment +" # Zalecenia: "+ this.treatmentComments
+    }
+    console.log(referral);
+    this.httpReferral.addReferral(referral, this.param).subscribe(
+      ()=>this.ngOnInit(),
+      (error)=> console.log(error)
+    );
   }
 
 }
