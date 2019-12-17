@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Observable } from 'rxjs';
+import { MustMatch } from '../../_helpers/must-match-validator'
 
 @Component({
   selector: 'app-register',
@@ -10,23 +10,10 @@ import { Observable } from 'rxjs';
 })
 export class RegisterComponent implements OnInit {
   model: any = {};
+  submitted = false;
   
   modelForm : FormGroup;
 
-  formErrors = {
-    firstname: '',
-    lastname: ''
-  }
-
-  private validationMessages = {
-    firstName: {
-      required: 'firstname is required'
-    },
-    secondName: {
-      required: 'lastname is required',
-      minlength: 'lastname must have at least 3 characters'
-    }
-  }
   constructor(private formBuilder : FormBuilder,
               private authService: AuthService) { }
 
@@ -42,17 +29,24 @@ export class RegisterComponent implements OnInit {
       houseNumber: ['', Validators.required],
       phoneNumber: ['', Validators.required],
 
-      email: ['', Validators.email],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
       password2: ['', Validators.required]
+    },{
+      validator: MustMatch('password', 'password2')
     }); 
   }
   register() {
-    this.authService.addNewPatient(this.modelForm.value).subscribe(() =>{
-      console.log('registration successful');
-    },error => {
-      console.log(error);
-    });
+    this.submitted = true;
+    if(this.modelForm.valid)
+    {
+      this.authService.addNewPatient(this.modelForm.value).subscribe(() =>{
+        console.log('registration successful');
+      },error => {
+        console.log(error);
+      });
+    }
+
   } 
 
   cancel() {

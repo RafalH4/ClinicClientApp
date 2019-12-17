@@ -1,57 +1,102 @@
 <form [formGroup]="modelForm" class="form-signin" (ngSubmit)="register()">
-    <h4 class="text-center text=primary" > Dane osobowe</h4>
+    <h4 class="text-center text=primary"> Dane osobowe</h4>
     <div class="row">
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Imię" formControlName="firstName">
+            <input type="text" class="form-control" placeholder="Imię" formControlName="firstName"
+                [ngClass]="{ 'is-invalid': submitted && modelForm.controls.firstName.errors }">
+            <div *ngIf="submitted && modelForm.controls.firstName.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.firstName.errors.required">Imię musi zawierać min 3 znaki</div>
+            </div>
         </div>
 
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Nazwisko" formControlName="secondName">
-            <span *ngIf="formErrors.secondName">{{ formErrors.secondName }}</span>
+            <input type="text" class="form-control" placeholder="Nazwisko" formControlName="secondName"
+                [ngClass]="{ 'is-invalid': submitted && modelForm.controls.secondName.errors }">
+            <div *ngIf="submitted && modelForm.controls.secondName.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.secondName.errors.required">Nazwisko musi zawierać min 3 znaki</div>
+            </div>
         </div>
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="PESEL" formControlName="pesel">
+            <input type="text" class="form-control" placeholder="PESEL" formControlName="pesel"
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.pesel.errors }">
+            <div *ngIf="submitted && modelForm.controls.pesel.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.pesel.errors.required">To pole jest wymagane</div>
+            </div>
         </div>
 
     </div>
     <h4 class="text-center text=primary"> Dane kontaktowe</h4>
     <div class="row">
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Kod pocztowy" formControlName="postCode">
+            <input type="text" class="form-control" placeholder="Kod pocztowy" formControlName="postCode"
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.postCode.errors }">
+            <div *ngIf="submitted && modelForm.controls.postCode.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.postCode.errors.required">To pole jest wymagane</div>
+            </div>
+            
         </div>
 
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Miasto" formControlName="city">
+            <input type="text" class="form-control" placeholder="Miasto" formControlName="city"            
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.city.errors }">
+            <div *ngIf="submitted && modelForm.controls.city.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.city.errors.required">To pole jest wymagane</div>
+            </div>
         </div>
 
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Ulica" formControlName="street">
+            <input type="text" class="form-control" placeholder="Ulica" formControlName="street"            
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.street.errors }">
+            <div *ngIf="submitted && modelForm.controls.street.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.street.errors.required">To pole jest wymagane</div>
+            </div>        
         </div>
 
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Nr budynku" formControlName="houseNumber">
+            <input type="text" class="form-control" placeholder="Nr budynku" formControlName="houseNumber"
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.houseNumber.errors }">
+            <div *ngIf="submitted && modelForm.controls.houseNumber.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.houseNumber.errors.required">To pole jest wymagane</div>
+            </div>  
         </div>
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Numer telefonu" formControlName="phoneNumber">
+            <input type="text" class="form-control" placeholder="Numer telefonu" formControlName="phoneNumber"
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.phoneNumber.errors }">
+            <div *ngIf="submitted && modelForm.controls.phoneNumber.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.phoneNumber.errors.required">To pole jest wymagane</div>
+            </div> 
         </div>
 
     </div>
     <h4 class="text-center text=primary"> Dane konta</h4>
     <div class="row">
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="E-mail" formControlName="email">
+            <input type="text" class="form-control" placeholder="E-mail" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.email.errors }">
+            <div *ngIf="submitted && modelForm.controls.email.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.email.errors.required">To pole jest wymagane</div>
+                <div *ngIf="modelForm.controls.email.errors.email">Wpisz poprawny email</div>
+            </div> 
         </div>
 
         <div class="form-group col-md-6">
-            <input type="password" class="form-control" placeholder="Hasło" formControlName="password">
+            <input type="password" class="form-control" placeholder="Hasło" formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.password.errors }">
+            <div *ngIf="submitted && modelForm.controls.password.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.password.errors.required">To pole jest wymagane</div>
+            </div> 
         </div>
 
         <div class="form-group col-md-6">
-            <input type="password" class="form-control" placeholder="Potwierdź Hasło" formControlName="password2">
+            <input type="password" class="form-control" placeholder="Potwierdź Hasło" formControlName="password2"
+            [ngClass]="{ 'is-invalid': submitted && modelForm.controls.password2.errors }">
+            <div *ngIf="submitted && modelForm.controls.password2.errors" class="invalid-feedback">
+                <div *ngIf="modelForm.controls.password2.errors.required">To pole jest wymagane</div>
+                <div *ngIf="modelForm.controls.password2.errors.mustMatch">Hasła różnią się od siebie</div>
+            </div> 
         </div>
     </div>
     <div class="form-group text-center">
-        <button class="btn btn-success" type="submit" [disabled]="!modelForm.valid">Zarejestruj</button>
-        <button class="btn btn-default" type="submit" (click)="cancel()">Anuluj</button>
+        <button class="btn btn-success" type="submit">Zarejestruj</button>
     </div>
 </form>
