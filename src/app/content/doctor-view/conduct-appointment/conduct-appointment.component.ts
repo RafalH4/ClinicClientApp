@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { PrescriptionService } from 'src/app/services/prescription.service';
 
 @Component({
   selector: 'app-conduct-appointment',
@@ -10,9 +11,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 export class ConductAppointmentComponent implements OnInit {
   param: any;
   appointment : any = {}
-  constructor(private http : AppointmentService,     
-    private route: ActivatedRoute,
-    private router: Router) { }
+  drug: string;
+  drugComments: string;
+  constructor(
+    private httpPrescription: PrescriptionService,
+    private httpAppointment : AppointmentService,     
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     console.log("działam")
@@ -20,10 +24,26 @@ export class ConductAppointmentComponent implements OnInit {
       this.param = params['id'];
       console.log(this.param);
     })
-    this.http.getById(this.param).subscribe(data =>{
+    this.httpAppointment.getById(this.param).subscribe(data =>{
       this.appointment = data;
       console.log(this.appointment);
     })
+  }
+
+  savePrescription()
+  {
+
+    console.log(this.drug);
+    console.log(this.drugComments);
+    var prescription = {
+      drug: this.drug +" # Zalecenia: "+ this.drugComments
+    }
+    console.log(prescription);
+    this.httpPrescription.addPrescription(prescription, this.param).subscribe(
+      ()=>console.log("success"),
+      (error)=> console.log(error)
+    );
+
   }
 
 }

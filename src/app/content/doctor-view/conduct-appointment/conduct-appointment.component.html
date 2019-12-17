@@ -39,7 +39,7 @@
                         Wystawianie recepty
                     </div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-primary float-right">Dodaj</button>
+                        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#prescriptionModal">Dodaj</button>
                     </div>
                 </div>
             </div>
@@ -76,3 +76,17 @@
 
 
 </div>
+
+<div class="modal" id="prescriptionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+            Nazwa leku: <input type="text" class="form-control" [(ngModel)]="drug"><br>
+            Zalecenia: <input type="text" class="form-control" [(ngModel)]="drugComments"><br>
+         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="savePrescription()">Zapisz</button>
+        </div>
+      </div>
+    </div>
+  </div>
