@@ -23,7 +23,7 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-2">
-                    <button>Pokaż</button>
+                    <button class="btn btn-primary">Pokaż</button>
                 </div>
             </div>
         </form>
@@ -33,16 +33,16 @@
             <thead class="thead-light">
                 <tr>
                     <th scope="col">
-                        <button class="btn btn-primary" (click)="previous(7)">Wstecz</button>
+                        <button class="btn btn-primary" (click)="previous()">Wstecz</button>
                     </th>
-                    <th scope="col">Pon <br>{{a }}</th>
+                    <th scope="col">Pon <br>{{monday | date:'dd-MM'}}</th>
                     <th scope="col">Wt <br>{{tuesday | date:'dd-MM'}}</th>
                     <th scope="col">Śr <br>{{wednesday | date:'dd-MM'}}</th>
                     <th scope="col">Czw <br>{{thrusday | date:'dd-MM'}}</th>
                     <th scope="col">Pt <br>{{friday | date:'dd-MM'}}</th>
                     <th scope="col">Sob <br>{{saturday | date:'dd-MM'}}</th>
                     <th scope="col">
-                        <button class="btn btn-primary" (click)="next(7)">Dalej</button>
+                        <button class="btn btn-primary" (click)="next()">Dalej</button>
                     </th>
 
                 </tr>
