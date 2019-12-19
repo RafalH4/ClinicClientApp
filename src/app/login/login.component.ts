@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthGuard } from '../guard/auth.guard';
 import decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { AlertifyService } from '../services/alertify.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   role: string;
   constructor(private formBuilder : FormBuilder,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private  alertify: AlertifyService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -36,9 +38,9 @@ export class LoginComponent implements OnInit {
     }
 
    this.authService.login(this.loginForm.value).subscribe(next =>{
-      console.log('Logged ');      
+      this.alertify.success('Poprawnie zalogowano ');      
     }, error => {
-      console.log('Failed to login');
+     this.alertify.error('Proszę wpisać poprawne dane do logowania');
     });
 
   }

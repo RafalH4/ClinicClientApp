@@ -49,6 +49,7 @@ import { AllAppointmentComponent } from './content/doctor-view/all-appointment/a
 import { MakeAppointmentComponent } from './content/patient-view/make-appointment/make-appointment.component';
 import { MyAppointmentsComponent } from './content/patient-view/my-appointments/my-appointments.component';
 import { MyDocumentsComponent } from './content/patient-view/my-documents/my-documents.component';
+import { ErrorInterceptorProvider } from './services/error.interceptor';
 
 
 
@@ -172,7 +173,8 @@ const appRoutes: Routes = [
 
   ],
   providers: [
-    AuthService
+    AuthService,
+    ErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]
 })
