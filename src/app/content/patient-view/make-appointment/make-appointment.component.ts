@@ -28,6 +28,7 @@ export class MakeAppointmentComponent implements OnInit{
   thrusday: Date = new Date();
   friday: Date = new Date();
   saturday: Date = new Date();
+  days: any [];
   weekNumber=0;
 
   numberOfWeek : number = 0;
@@ -47,6 +48,7 @@ export class MakeAppointmentComponent implements OnInit{
     ) { }
 
   ngOnInit() {
+    this.setCalendarDays();
     this.httpDepartment.getAllDepartments().subscribe((data: any[]) => {
       this.departments = data;
     })
@@ -58,13 +60,14 @@ export class MakeAppointmentComponent implements OnInit{
       departmentName: ['',],
       doctorId: ['',],
     })
-this.setCalendarDays()
+    this.getAppointments()
 
   }
 
   setParams(id: number) {
       var date = new Date();
-      this.startDate.setDate(date.getDate()-date.getDay()+1+id);
+     // this.startDate.setDate(date.getDate()-date.getDay()+1+id);
+     this.startDate = new Date(this.days[id]);
       
       this.stringParams="?";
       this.stringParams= this.stringParams+"&date="+ this.startDate.toISOString();
@@ -80,6 +83,7 @@ this.setCalendarDays()
 
   setCalendarDays()
   {
+    this.days=[];
     this.monday.setDate(this.monday.getDate()-this.monday.getDay()+1+this.weekNumber);
     this.monday = new Date(this.monday);
 
@@ -97,6 +101,8 @@ this.setCalendarDays()
 
     this.saturday.setDate(this.saturday.getDate()-this.saturday.getDay()+6+this.weekNumber);
     this.saturday = new Date(this.saturday);
+    this.days.push(this.monday, this.tuesday, this.wednesday, this.thrusday, this.friday, this.saturday)
+
   }
 
 
@@ -140,12 +146,12 @@ this.setCalendarDays()
   }
 
   next(){
-    this.weekNumber+=7;
+    this.weekNumber=7;
     this.ngOnInit();
   }
 
   previous(){
-    this.weekNumber-=7;
+    this.weekNumber=-7;
     this.ngOnInit();
   }
 }

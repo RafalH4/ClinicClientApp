@@ -48,51 +48,56 @@
                 </tr>
             </thead>
             <tbody>
+
+<td></td>
+
+                        <td class="col-2">
+                            <div *ngFor="let appointment of mondays">
+                                <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
+                                    {{appointment.date | date:'HH:mm'}}
+                                </button>
+                            </div>
+                        </td>
+                        <td class="col-2">
+                            <div *ngFor="let appointment of tuesdays">
+                                <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
+                                    {{appointment.date | date:'HH:mm'}}
+                                </button>
+                            </div>
+                        </td>
+                        <td class="col-2">
+                            <div *ngFor="let appointment of wednesdays">
+                                <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
+                                    {{appointment.date | date:'HH:mm'}}
+                                </button>
+                            </div>
+                        </td>
+                        <td class="col-2">
+                            <div *ngFor="let appointment of thrusdays">
+                                <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
+                                    {{appointment.date | date:'HH:mm'}}
+                                </button>
+                            </div>
+                        </td>
+                        <td class="col-2">
+                            <div *ngFor="let appointment of fridays">
+                                <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
+                                    {{appointment.date | date:'HH:mm'}}
+                                </button>
+                            </div>
+                        </td>
+                        <td class="col-2">
+                            <div *ngFor="let appointment of saturdays">
+                                <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
+                                    {{appointment.date | date:'HH:mm'}}
+                                </button>
+                            </div>
+                        </td>
+
+                        <td></td>
+
+
                 <tr>
-                    <td class="col-2"></td>
-                    <td class="col-2">
-                        <div *ngFor="let appointment of mondays">
-                            <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
-                                {{appointment.date | date:'HH:mm'}}
-                            </button>
-                        </div>
-                    </td>
-                    <td class="col-2">
-                        <div *ngFor="let appointment of tuesdays">
-                            <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
-                                {{appointment.date | date:'HH:mm'}}
-                            </button>
-                        </div>
-                    </td>
-                    <td class="col-2">
-                        <div *ngFor="let appointment of wednesdays">
-                            <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
-                                {{appointment.date | date:'HH:mm'}}
-                            </button>
-                        </div>
-                    </td>
-                    <td class="col-2">
-                        <div *ngFor="let appointment of thrusdays">
-                            <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
-                                {{appointment.date | date:'HH:mm'}}
-                            </button>
-                        </div>
-                    </td>
-                    <td class="col-2">
-                        <div *ngFor="let appointment of fridays">
-                            <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
-                                {{appointment.date | date:'HH:mm'}}
-                            </button>
-                        </div>
-                    </td>
-                    <td class="col-2">
-                        <div *ngFor="let appointment of saturdays">
-                            <button class="btn btn-primary mt-2 col-12" (click)=addMeToAppointment(appointment.id)>
-                                {{appointment.date | date:'HH:mm'}}
-                            </button>
-                        </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
     </div>
